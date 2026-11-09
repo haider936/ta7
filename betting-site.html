@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>TA7 — Demo Cricket Betting</title>
+<meta name="description" content="TA7 — free demo cricket betting practice site. 10,000 demo credits, live cricket odds, bet slip, wallet, bet history and leaderboard. No real money, demo only — 18+."/>
+<meta name="keywords" content="TA7, demo cricket betting, cricket betting practice, free demo credits, cricket odds, PSL betting demo, bet slip, in-play odds demo"/>
+<meta name="robots" content="index, follow"/>
+<meta name="author" content="TA7"/>
+<meta name="theme-color" content="#063d22"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="TA7"/>
+<meta property="og:title" content="TA7 — Demo Cricket Betting"/>
+<meta property="og:description" content="Free demo cricket betting practice — 10,000 demo credits, live odds, bet slip, wallet and leaderboard. No real money. 18+ demo only."/>
+<meta property="og:locale" content="en_PK"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TA7 — Demo Cricket Betting"/>
+<meta name="twitter:description" content="Free demo cricket betting practice with 10,000 demo credits and live odds. No real money — 18+ demo only."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6f3; --surface:#ffffff; --surface2:#eef2ec; --line:#dde5db;
+  --text:#0f1a12; --muted:#5b6b5e; --green:#0a7a3e; --green2:#0ec95e; --green-dark:#063d22;
+  --amber:#ffbe0b; --red:#e63946; --chip:#e8f5e9; --odds:#eef4ff; --odds-border:#c7d6f5; --odds-text:#13294b;
+  --shadow:0 10px 30px rgba(6,61,34,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0b120d; --surface:#131e15; --surface2:#1a2a1e; --line:#243628; --text:#eef7ef; --muted:#9ab09e; --chip:#17301e; --odds:#16263d; --odds-border:#2a4566; --odds-text:#dbeafe; --shadow:0 10px 30px rgba(0,0,0,.35); }
+}
+:root[data-theme="dark"]{ --bg:#0b120d; --surface:#131e15; --surface2:#1a2a1e; --line:#243628; --text:#eef7ef; --muted:#9ab09e; --chip:#17301e; --odds:#16263d; --odds-border:#2a4566; --odds-text:#dbeafe; --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+:root[data-theme="light"]{ --bg:#f4f6f3; --surface:#ffffff; --surface2:#eef2ec; --line:#dde5db; --text:#0f1a12; --muted:#5b6b5e; --chip:#e8f5e9; --odds:#eef4ff; --odds-border:#c7d6f5; --odds-text:#13294b; color-scheme:light}
+*{box-sizing:border-box} html,body{margin:0} body{font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit} button,input,textarea,select{font:inherit}
+.topbar{position:sticky;top:0;z-index:30;background:var(--green-dark);color:#fff;border-bottom:3px solid var(--amber)}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:Archivo,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:22px;line-height:1;display:flex;align-items:center;gap:10px}
+.logo-badge{background:var(--amber);color:#111;padding:5px 7px;border-radius:6px;font-size:11px;letter-spacing:.08em}
+.logo span{color:var(--green2)}
+.top-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.balance-pill{background:#fff;color:#111;border-radius:999px;padding:7px 10px 7px 12px;display:flex;align-items:center;gap:8px;font-weight:800;font-size:13px}
+.balance-pill b{font-size:14px}
+.balance-pill button{background:var(--green);color:#fff;border:0;border-radius:999px;padding:5px 9px;font-weight:800;cursor:pointer;font-size:12px}
+.icon-btn{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.2);padding:8px 11px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13px}
+.demo-strip{background:#fff3cd;color:#664d03;border-bottom:1px solid #ffecb5;padding:9px 16px;text-align:center;font-size:13px;font-weight:600}
+@media(prefers-color-scheme:dark){.demo-strip{background:#2a2103;color:#ffe08a;border-color:#4a3a08}}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+.hero{background:var(--green-dark);color:#fff;border-radius:18px;padding:22px;overflow:hidden;position:relative}
+.hero h1{font-family:Archivo,sans-serif;font-size:34px;line-height:.95;letter-spacing:-.03em;margin:6px 0 10px;max-width:640px}
+.hero h1 i{color:var(--amber);font-style:normal}
+.hero p{color:#cfe8d3;max-width:620px;margin:0;font-size:15px}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.hstat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;min-width:118px}
+.hstat b{display:block;font-size:18px} .hstat span{font-size:12px;color:#cfe8d3}
+.layout{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px;align-items:start}
+@media(max-width:900px){.layout{grid-template-columns:1fr} .hero h1{font-size:28px}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.card-h{padding:16px 16px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.card-h h2{font-family:Archivo,sans-serif;font-size:18px;margin:0;letter-spacing:-.02em}
+.card-h p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:6px;background:var(--surface2);padding:5px;border-radius:999px;width:fit-content;max-width:100%;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;padding:8px 13px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted)}
+.tabs button.active{background:var(--text);color:var(--bg)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px 0}
+.filters button{border:1px solid var(--line);background:var(--surface);padding:7px 11px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13px}
+.filters button.active{background:var(--green);color:#fff;border-color:var(--green)}
+.match{padding:16px;border-top:1px solid var(--line)}
+.match:first-of-type{border-top:0}
+.match-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.league{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
+.meta{font-size:12px;color:var(--muted);font-weight:600}
+.live-dot{display:inline-flex;align-items:center;gap:6px;color:var(--red);font-weight:800;font-size:12px}
+.live-dot:before{content:"";width:8px;height:8px;background:var(--red);border-radius:50%;display:inline-block;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.teams{margin:10px 0 12px}
+.team-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.team-row:last-child{border-bottom:0}
+.team-name{font-weight:800;font-size:15px;display:flex;gap:8px;align-items:center}
+.flag{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;flex:0 0 auto}
+.score{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700;font-size:13px;text-align:right}
+.market-label{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:10px 0 8px}
+.odds-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:480px){.odds-grid{grid-template-columns:1fr 1fr}}
+.odds-btn{border:1.5px solid var(--odds-border);background:var(--odds);color:var(--odds-text);border-radius:12px;padding:11px 10px;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;transition:.15s}
+.odds-btn:hover{transform:translateY(-1px)}
+.odds-btn small{display:block;font-size:11px;font-weight:700;opacity:.75;text-transform:uppercase;letter-spacing:.04em}
+.odds-btn strong{font-size:13px;line-height:1.2}
+.odds-val{font-family:Archivo,sans-serif;font-size:18px;font-weight:900;background:#fff;color:#0a7a3e;border:1px solid #cfe8d3;padding:4px 7px;border-radius:8px;white-space:nowrap}
+@media(prefers-color-scheme:dark){.odds-val{background:#0b120d}}
+.odds-btn.selected{background:var(--green);border-color:var(--green);color:#fff}
+.odds-btn.selected .odds-val{background:#fff;color:var(--green)}
+.extra-markets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:600px){.extra-markets{grid-template-columns:1fr}}
+.mini-odds{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px;cursor:pointer;text-align:left}
+.mini-odds.selected{outline:2px solid var(--green);background:var(--chip)}
+.mini-odds span{font-size:12px;color:var(--muted);display:block} .mini-odds b{font-size:14px}
+/* slip */
+.slip{position:sticky;top:84px}
+@media(max-width:900px){.slip{position:static}}
+.slip-body{padding:14px 16px 16px}
+.empty{border:1.5px dashed var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--muted);font-size:14px}
+.slip-item{border:1px solid var(--line);border-radius:12px;padding:11px;margin-bottom:9px;background:var(--surface2)}
+.slip-item-top{display:flex;justify-content:space-between;gap:8px}
+.slip-item b{font-size:14px} .slip-item p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.remove{border:0;background:transparent;cursor:pointer;font-size:18px;line-height:1;color:var(--muted)}
+.slip-odds{font-weight:900;color:var(--green)}
+.field label{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--text);border-radius:11px;padding:12px 13px;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(10,122,62,.15)}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.quick button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 10px;cursor:pointer;font-weight:700;font-size:12px}
+.summary{background:var(--surface2);border-radius:12px;padding:12px;margin-top:12px}
+.summary div{display:flex;justify-content:space-between;font-size:14px;padding:3px 0} .summary div.total{font-weight:900;font-size:16px;border-top:1px solid var(--line);margin-top:6px;padding-top:9px}
+.btn{width:100%;border:0;border-radius:12px;padding:13px 14px;font-weight:900;cursor:pointer;font-size:15px}
+.btn-green{background:var(--green);color:#fff} .btn-green:disabled{opacity:.5;cursor:not-allowed}
+.btn-dark{background:var(--text);color:var(--bg)} .btn-outline{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+.btn-amber{background:var(--amber);color:#111}
+/* views */
+.view{display:none} .view.active{display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px} @media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.wallet-big{padding:18px} .wallet-big small{color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.wallet-amt{font-family:Archivo,sans-serif;font-size:38px;font-weight:900;letter-spacing:-.03em;line-height:1;margin:6px 0}
+.credit-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px} .credit-btns button{flex:1;min-width:100px;border:0;border-radius:11px;padding:11px;background:var(--green);color:#fff;font-weight:800;cursor:pointer}
+.credit-btns button.alt{background:var(--surface2);color:var(--text);border:1px solid var(--line)}
+.notice{border-radius:12px;padding:12px 13px;font-size:13px;line-height:1.5}
+.notice-warn{background:#fff8e1;border:1px solid #ffe082;color:#5d4037} @media(prefers-color-scheme:dark){.notice-warn{background:#2a2103;color:#ffe08a;border-color:#5a4a12}}
+.notice-green{background:var(--chip);border:1px solid var(--line)}
+.bet-row,.tx-row{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;border-top:1px solid var(--line)}
+.bet-row:first-of-type,.tx-row:first-of-type{border-top:0}
+.badge{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.03em;text-transform:uppercase}
+.badge-pending{background:#fff3cd;color:#856404} .badge-won{background:#d1fae5;color:#065f46} .badge-lost{background:#fee2e2;color:#991b1b}
+@media(prefers-color-scheme:dark){.badge-pending{background:#3a2f06;color:#fde68a}.badge-won{background:#064e3b;color:#a7f3d0}.badge-lost{background:#450a0a;color:#fca5a5}}
+.auth-wrap{max-width:460px;margin:22px auto 0}
+.auth-card{padding:22px}
+.auth-card h2{font-family:Archivo,sans-serif;margin:0 0 4px;font-size:24px;letter-spacing:-.02em}
+.auth-card>p{color:var(--muted);margin:0 0 16px;font-size:14px}
+.form-stack{display:grid;gap:12px}
+.divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;font-weight:700} .divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line)}
+.helper{font-size:12px;color:var(--muted);text-align:center}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:12px 16px;border-radius:999px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:92vw;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.footer{padding:22px 16px 34px;color:var(--muted);font-size:12px;line-height:1.6;max-width:1180px;margin:0 auto}
+.hidden{display:none!important}
+.deposit-lock{display:flex;gap:10px;align-items:flex-start}
+.lock-ico{width:36px;height:36px;border-radius:10px;background:#fff3cd;display:grid;place-items:center;font-size:18px;flex:0 0 auto}
+@media(prefers-color-scheme:dark){.lock-ico{background:#3a2f06}}
+input:disabled,textarea:disabled{opacity:.85}
+.kicker{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.age-banner{display:flex;gap:12px;align-items:flex-start;background:#7f1d1d;color:#fff;border-radius:14px;padding:13px 14px;margin-bottom:14px}
+.age-badge{width:44px;height:44px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;font-weight:900;font-size:13px;flex:0 0 auto;background:#dc2626}
+.live-strip{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px 0}
+@media(max-width:640px){.live-strip{grid-template-columns:1fr}}
+.live-card{border:1px solid #fecaca;background:#fef2f2;border-radius:12px;padding:11px 12px}
+@media(prefers-color-scheme:dark){.live-card{background:#2a0f0f;border-color:#5b1a1a}}
+.live-card b{font-size:13px} .live-card p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.search-row{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px 0}
+.search-row input,.search-row select{border:1.5px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:9px 13px;outline:none;font-size:13px}
+.search-row input{flex:1;min-width:180px}
+.mode-toggle{display:flex;background:var(--surface2);border-radius:999px;padding:4px;gap:4px;margin-top:12px}
+.mode-toggle button{flex:1;border:0;background:transparent;padding:8px;border-radius:999px;font-weight:800;font-size:13px;cursor:pointer;color:var(--muted)}
+.mode-toggle button.active{background:var(--text);color:var(--bg)}
+.badge-cancelled{background:#e5e7eb;color:#374151} @media(prefers-color-scheme:dark){.badge-cancelled{background:#374151;color:#e5e7eb}}
+.badge-live{background:#fee2e2;color:#991b1b} .badge-upcoming{background:#dbeafe;color:#1e40af}
+.cancel-btn{border:1px solid #fca5a5;background:#fff1f2;color:#991b1b;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px;cursor:pointer;margin-top:6px}
+@media(prefers-color-scheme:dark){.cancel-btn{background:#450a0a}}
+.lb-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--line)}
+.lb-row:first-of-type{border-top:0}
+.rank{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--surface2);flex:0 0 auto;font-size:14px}
+.rank.top{background:var(--amber);color:#111}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;flex:0 0 auto}
+.bonus-box{background:var(--green-dark);color:#fff;border-radius:14px;padding:16px;margin-bottom:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.bonus-box p{margin:3px 0 0;color:#cfe8d3;font-size:13px;max-width:480px}
+.score-detail{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.score-chip{background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700}
+.tx-filters{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0}
+.tx-filters button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.tx-filters button.active{background:var(--green);color:#fff;border-color:var(--green)}
+.badge-cashed{background:#e0e7ff;color:#3730a3} @media(prefers-color-scheme:dark){.badge-cashed{background:#312e81;color:#c7d2fe}}
+.promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px} @media(max-width:700px){.promo-grid{grid-template-columns:1fr}}
+.promo{border-radius:14px;padding:14px;color:#fff}
+.promo b{font-family:Archivo,sans-serif;font-size:15px;display:block} .promo p{margin:4px 0 10px;font-size:12px;opacity:.92}
+.promo button{border:0;border-radius:999px;padding:7px 12px;font-weight:800;font-size:12px;cursor:pointer;background:#fff;color:#111}
+.form-dots{display:inline-flex;gap:3px;vertical-align:middle}
+.form-dots i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-style:normal;font-weight:900;color:#fff}
+.w{background:#0a7a3e}.l{background:#dc2626}.d{background:#6b7280}
+.stat-bar{display:flex;align-items:center;gap:8px;font-size:12px;margin:4px 0}.stat-bar .bar{flex:1;height:8px;background:var(--surface2);border-radius:99px;overflow:hidden}.stat-bar .fill{height:100%;background:var(--green)}
+.fav-btn,.bell-btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 10px;cursor:pointer;font-size:13px;font-weight:700}
+.fav-btn.on{background:#fff7cc;border-color:var(--amber)} .bell-btn.on{background:var(--chip);border-color:var(--green)}
+details.faq{border-top:1px solid var(--line);padding:12px 16px} details.faq summary{cursor:pointer;font-weight:800;font-size:14px} details.faq p{color:var(--muted);font-size:13px;margin:6px 0 0}
+.odds-flash{animation:flashBg 1s} @keyframes flashBg{0%{background:#fef08a}100%{}}
+.cash-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.cash-row button{border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer;border:1px solid var(--line);background:var(--surface)}
+.cash-row .full{background:var(--green);color:#fff;border-color:var(--green)}
+.seg{display:flex;background:var(--surface2);border-radius:999px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;padding:6px 10px;border-radius:999px;font-weight:800;font-size:12px;cursor:pointer;color:var(--muted)}
+.seg button.active{background:var(--surface);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.page-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.back-btn{border:1.5px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;cursor:pointer}
+.page-head h2{font-family:Archivo,sans-serif;font-size:20px;margin:0;letter-spacing:-.02em}
+.mainnav{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;flex-wrap:wrap;box-shadow:var(--shadow)}
+.mainnav button{border:0;background:transparent;padding:9px 12px;border-radius:10px;cursor:pointer;font-weight:800;font-size:13px;color:var(--muted)}
+.mainnav button.active{background:var(--green);color:#fff}
+.auth-page{display:none}.auth-page.active{display:block}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}.kv:last-child{border-bottom:0}
+.detail-hero{background:var(--green-dark);color:#fff;border-radius:14px;padding:18px}
+.detail-hero .score{color:#ffe08a}
+.pass-wrap{position:relative}
+.pass-wrap input{padding-right:48px!important}
+.eye-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;border-radius:8px;cursor:pointer;display:grid;place-items:center;color:var(--muted);padding:0}
+.eye-btn:hover{background:var(--surface2);color:var(--text)}
+.eye-btn svg{width:20px;height:20px;display:block}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><span style="background:var(--amber);color:#111;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:18px">🏏</span> TA7 <span class="logo-badge">DEMO ONLY • NO REAL MONEY</span></div>
+    <div class="top-actions" id="topActionsGuest">
+      <button class="icon-btn" onclick="showAuth('login')">Log in</button>
+      <button class="icon-btn" style="background:var(--amber);color:#111;border-color:var(--amber)" onclick="showAuth('signup')">Join — Get 10,000 Free</button>
+    </div>
+    <div class="top-actions hidden" id="topActionsUser">
+      <div class="balance-pill">🪙 <span id="balanceLabel">10,000</span> credits <button onclick="addCredits(1000)">+1,000 Free</button></div>
+      <button class="icon-btn" id="userChip">User</button>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Dark / Light mode">🌙 Dark</button>
+      <button class="icon-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+<div class="demo-strip">🔞 <strong>18+ ONLY — DEMO MODE, NO REAL MONEY.</strong> Ye sirf practice site hai. Sirf virtual demo credits chalenge — koi Easypaisa / JazzCash / bank deposit live nahi hai, credits ki koi cash value nahi. Real-money betting ke liye licence zaroori hai.</div>
+
+<main class="wrap">
+
+  <!-- AUTH -->
+  <section id="authView">
+    <div class="hero">
+      <div class="kicker">Pakistan • Cricket Betting Demo</div>
+      <h1>Cricket par bet lagao, <i>bina asli paisay</i> risk kiye.</h1>
+      <p>Har naye user ko <strong style="color:#fff">10,000 demo credits FREE</strong> milte hain. Live odds, bet slip, wallet aur poori bet history — bilkul asli betting jaisa experience, lekin paisa bilkul virtual.</p>
+      <div class="hero-stats">
+        <div class="hstat"><b>10,000</b><span>Free demo credits</span></div>
+        <div class="hstat"><b>6 Matches</b><span>Live &amp; upcoming</span></div>
+        <div class="hstat"><b>Instant</b><span>Bet settlement demo</span></div>
+        <div class="hstat"><b>Rs 0</b><span>Real money involved</span></div>
+      </div>
+    </div>
+
+    <div class="auth-wrap">
+      <!-- LOGIN PAGE (alag page) -->
+      <div class="auth-page active" id="authPage-login">
+        <div class="card auth-card">
+          <div style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:8px">PAGE: LOGIN</div>
+          <h2>Welcome back — Login</h2>
+          <p>Gmail ya phone number + password se login karo.</p>
+          <form class="form-stack" onsubmit="handleLogin(event)">
+            <div class="field">
+              <label>Gmail / Phone Number</label>
+              <input id="inputIdL" type="text" placeholder="you@gmail.com  or  0300 1234567" autocomplete="username" required/>
+              <div class="helper" style="text-align:left;margin-top:5px">Gmail (@gmail.com) ya Pakistani mobile number — 0300 1234567, +92 3001234567 ya +923001234567, teeno formats chalenge (spaces/dashes bhi theek hain).</div>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="pass-wrap"><input id="inputPassL" type="password" placeholder="Minimum 6 characters" autocomplete="current-password" required/><button type="button" class="eye-btn" onclick="togglePassword('inputPassL',this)" aria-label="Password dikhao" title="Password dikhao / chhupao"><svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.9 4.24A9.5 9.5 0 0 1 12 4c6.5 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19M6.61 6.61A13.5 13.5 0 0 0 2 12s3.5 8 10 8a9.7 9.7 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/></svg></button></div>
+            </div>
+            <button class="btn btn-green" type="submit">Log In →</button>
+            <div class="divider">DEMO ACCOUNT</div>
+            <button type="button" class="btn btn-outline" onclick="quickDemo()">⚡ One-tap Demo Login — 10,000 Credits</button>
+            <p class="helper">Ye demo login hai — koi data server par save nahi hota. Page refresh par session khatam ho sakta hai. 18+ only. Demo credits ki koi cash value nahi hai.</p>
+          </form>
+          <div class="divider" style="margin-top:14px">NAYA ACCOUNT?</div>
+          <button type="button" class="btn btn-amber" onclick="showAuthPage('signup')">Sign Up Page par jao — 10,000 FREE Credits →</button>
+        </div>
+      </div>
+      <!-- SIGN UP PAGE (alag page) -->
+      <div class="auth-page" id="authPage-signup">
+        <div class="card auth-card">
+          <button type="button" class="back-btn" onclick="showAuthPage('login')">← Back — Login Page</button>
+          <div style="font-size:12px;color:var(--muted);font-weight:700;margin:10px 0 8px">PAGE: SIGN UP</div>
+          <h2>Create account — 10,000 FREE credits</h2>
+          <p>Sign up karte hi wallet me 10,000 demo credits milenge. Koi card, koi Easypaisa nahi chahiye. Sirf demo — koi asli paisa nahi.</p>
+          <form class="form-stack" onsubmit="handleSignup(event)">
+            <div class="field">
+              <label>Your Name</label>
+              <input id="inputNameS" type="text" placeholder="e.g. Ahmed Khan" autocomplete="name"/>
+            </div>
+            <div class="field">
+              <label>Gmail / Phone Number</label>
+              <input id="inputIdS" type="text" placeholder="you@gmail.com  or  0300 1234567" autocomplete="username" required/>
+              <div class="helper" style="text-align:left;margin-top:5px">Gmail (@gmail.com) ya Pakistani mobile number — 0300 1234567, +92 3001234567 ya +923001234567, teeno formats chalenge (spaces/dashes bhi theek hain).</div>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="pass-wrap"><input id="inputPassS" type="password" placeholder="Minimum 6 characters" autocomplete="new-password" required/><button type="button" class="eye-btn" onclick="togglePassword('inputPassS',this)" aria-label="Password dikhao" title="Password dikhao / chhupao"><svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.9 4.24A9.5 9.5 0 0 1 12 4c6.5 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19M6.61 6.61A13.5 13.5 0 0 0 2 12s3.5 8 10 8a9.7 9.7 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/></svg></button></div>
+            </div>
+            <div class="notice notice-warn">🔞 <b>18+ only.</b> Account bana kar tum confirm karte ho ke tum 18 saal ya zyada ke ho aur samajhte ho ke ye sirf demo credits wali practice site hai — koi real-money betting nahi.</div>
+            <button class="btn btn-green" type="submit">Create Account — Claim 10,000 Credits →</button>
+            <p class="helper">Pehle se account hai? <a href="#" onclick="showAuthPage('login');return false" style="font-weight:800;color:var(--green)">Login page par jao</a></p>
+          </form>
+        </div>
+      </div>
+      <p class="helper" style="margin-top:12px">Account banate hi wallet me 10,000 demo credits auto add ho jayenge. Credits khatam hon to wallet se free top-up mil jayega.</p>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="appView" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+      <div>
+        <div style="font-family:Archivo,sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em" id="welcomeTitle">Assalam-o-Alaikum 👋</div>
+        <div style="color:var(--muted);font-size:13px">Odds par tap karo → bet slip me add hoga → stake lagao → Place Bet.</div>
+      </div>
+    </div>
+    <nav class="mainnav" aria-label="Main pages" style="margin-bottom:14px">
+      <button class="active" data-nav="matches" onclick="goPage('matches')">🏠 Home / Matches</button>
+      <button data-nav="betslip" onclick="goPage('betslip')">🎫 Bet Slip <span id="slipNavCount"></span></button>
+      <button data-nav="mybets" onclick="goPage('mybets')">📜 My Bets <span id="betCountBadge"></span></button>
+      <button data-nav="wallet" onclick="goPage('wallet')">👛 Wallet</button>
+      <button data-nav="leaderboard" onclick="goPage('leaderboard')">🏆 Leaderboard</button>
+      <button data-nav="profile" onclick="goPage('profile')">👤 Profile</button>
+      <button data-nav="settings" onclick="goPage('settings')">⚙️ Limits &amp; Settings</button>
+      <button data-nav="help" onclick="goPage('help')">❓ Help / FAQ</button>
+    </nav>
+
+    <div class="age-banner" role="alert">
+      <div class="age-badge">18+</div>
+      <div style="font-size:13px;line-height:1.55"><strong>Saaf Warning — 18+ aur Demo-Only:</strong> Ye site sirf 18 saal se zyada umar walon ke liye hai aur sirf demo practice ke liye hai. Koi asli paisa nahi lagta, koi jeet cash me nahi milti, credits withdraw nahi hote. Apni hifazat ke liye neeche <b>Limits &amp; Settings</b> me apna demo limit lazmi set karo. Betting ki aadat lag sakti hai — demo par hi practice rakho.</div>
+    </div>
+
+    <div class="layout">
+      <div>
+        <!-- MATCHES VIEW -->
+        <div class="view active" id="view-matches">
+          <div class="card">
+            <div class="card-h"><div><h2>Cricket Matches — Live Score &amp; Status</h2><p>🔴 LIVE = match chal raha hai &nbsp;•&nbsp; 🔵 UPCOMING = abhi shuru nahi hua. Live score har kuch seconds me demo update hota hai.</p></div><span class="badge badge-live">● <span id="liveCountLabel">2 Live Now</span></span></div>
+            <div class="live-strip" id="liveStrip"></div>
+            <div class="search-row">
+              <input id="teamSearch" type="search" placeholder="🔍 Team se search karo — maslan Pakistan, Lahore, India…" oninput="onTeamSearch(this.value)" aria-label="Search by team"/>
+              <select id="tournamentFilter" onchange="onTournamentFilter(this.value)" aria-label="Filter by tournament">
+                <option value="all">Sab Tournaments</option>
+                <option value="PSL 2026">PSL 2026</option>
+                <option value="T20 International">T20 International</option>
+                <option value="ODI Series">ODI Series</option>
+                <option value="Test Championship">Test Championship</option>
+              </select>
+            </div>
+            <div class="filters">
+              <button class="active" onclick="filterMatches('all',this)">All Matches</button>
+              <button onclick="filterMatches('live',this)">🔴 Live — Chal Raha Hai</button>
+              <button onclick="filterMatches('upcoming',this)">🔵 Upcoming — Aanay Wala</button>
+              <button onclick="filterMatches('pak',this)">🇵🇰 Pakistan</button>
+              <button onclick="filterMatches('t20',this)">T20</button>
+              <button onclick="filterMatches('fav',this)">⭐ Favourites</button>
+            </div>
+            <div id="matchList"></div>
+          </div>
+          <div class="notice notice-green" style="margin-top:12px">💡 <strong>Kaise khelte hain?</strong> Kisi bhi odds button par click karo — wo bet slip me chala jayega. Phir stake (maslan 500 credits) likh kar <b>Place Bet</b> dabao. Jeetne par payout = stake × odds, seedha wallet me. Kisi match ki poori detail, stats aur markets ke liye <b>Match Detail</b> button dabao.</div>
+          <div class="promo-grid">
+            <div class="promo" style="background:#0a7a3e"><b>🎁 Daily Demo Bonus</b><p>Har roz +1,000 free demo credits — Wallet page se claim karo.</p><button onclick="goPage('wallet')">Wallet kholo</button></div>
+            <div class="promo" style="background:#7c3aed"><b>🚀 Acca Boost — Demo</b><p>Multiple bet me 3+ selections par +10% demo boost payout.</p><button onclick="goPage('betslip')">Bet Slip kholo</button></div>
+            <div class="promo" style="background:#0b4ea2"><b>🏆 Leaderboard</b><p>Demo credits me top players dekho aur apni rank check karo.</p><button onclick="goPage('leaderboard')">Leaderboard dekho</button></div>
+          </div>
+        </div>
+
+        <!-- MY BETS PAGE -->
+        <div class="view" id="view-mybets">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>📜 My Bets Page</h2></div>
+          <div class="card">
+            <div class="card-h"><div><h2>My Bets — Open &amp; Settled History</h2><p>Open (Pending) bets par match shuru hone se pehle <b>Cancel</b> aur live bets par <b>Cash Out</b> demo milta hai.</p></div><button class="btn btn-amber" style="width:auto;padding:10px 13px" onclick="settleAll()">▶ Simulate Results</button></div>
+            <div class="filters">
+              <button class="active" onclick="filterBets('all',this)">All</button>
+              <button onclick="filterBets('open',this)">🟡 Open</button>
+              <button onclick="filterBets('settled',this)">✅ Settled</button>
+              <button onclick="filterBets('Pending',this)">Pending</button>
+              <button onclick="filterBets('Won',this)">Won</button>
+              <button onclick="filterBets('Lost',this)">Lost</button>
+              <button onclick="filterBets('Cashed Out',this)">Cashed Out</button>
+              <button onclick="filterBets('Cancelled',this)">Cancelled</button>
+            </div>
+            <div id="betHistory" style="margin-top:6px"></div>
+            <div style="padding:14px 16px"><p class="helper" style="text-align:left">“Simulate Results” demo ke liye pending bets ka result random settle karta hai taake payout ka flow samajh aaye. Asli site par result match khatam hone par automatic aata hai.</p></div>
+          </div>
+        </div>
+
+        <!-- WALLET PAGE -->
+        <div class="view" id="view-wallet">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>👛 Wallet Page</h2></div>
+          <div class="bonus-box">
+            <div><b style="font-family:Archivo,sans-serif;font-size:17px">🎁 Daily Demo Bonus + Promotions</b><p>Roz ka free demo bonus claim karo — koi deposit nahi, koi asli paisa nahi. Promotions bhi sirf demo credits par hain.</p><div id="bonusStatus" style="font-size:13px;margin-top:6px;font-weight:700;color:#ffe08a">Aaj ka bonus available hai!</div></div>
+            <button class="btn btn-amber" style="width:auto;padding:12px 18px" id="dailyBonusBtn" onclick="claimDailyBonus()">Claim +1,000 Daily Bonus</button>
+          </div>
+          <div class="promo-grid" style="margin:0 0 16px">
+            <div class="promo" style="background:#0a7a3e"><b>🎁 Daily Bonus</b><p>Har din +1,000 free demo credits, sirf ek dafa roz.</p><button onclick="claimDailyBonus()">Claim karo</button></div>
+            <div class="promo" style="background:#7c3aed"><b>🚀 Acca Boost — Demo</b><p>Multiple bet (3+ selections) par demo me +10% extra payout ka hisaab slip me dikhta hai.</p><button onclick="goPage('betslip')">Bet Slip kholo</button></div>
+            <div class="promo" style="background:#b45309"><b>🔁 Free Top-Up</b><p>Balance khatam? Wallet se kabhi bhi free demo top-up — koi payment nahi.</p><button onclick="addCredits(1000)">+1,000 Free lo</button></div>
+          </div>
+          <div class="grid2">
+            <div class="card wallet-big">
+              <small>Demo Wallet Balance — Sirf Virtual Credits</small>
+              <div class="wallet-amt">🪙 <span id="walletBalance">10,000</span></div>
+              <div style="color:var(--muted);font-size:13px">In credits ki <b>koi cash value nahi</b> hai. Na ye Easypaisa / JazzCash me jayenge, na withdraw honge. Sirf demo betting ke liye hain.</div>
+              <div class="credit-btns">
+                <button onclick="addCredits(500)">+500 Free</button>
+                <button onclick="addCredits(1000)">+1,000 Free</button>
+                <button onclick="addCredits(5000)">+5,000 Free</button>
+                <button class="alt" onclick="addCredits(10000)">Reset to 10,000</button>
+              </div>
+              <div style="margin-top:14px" class="notice notice-green">✅ Demo credits unlimited aur free hain — balance khatam ho jaye to upar se dobara le lo, koi payment nahi chahiye.</div>
+            </div>
+
+            <div class="card">
+              <div class="card-h"><div><h2>Wallet Transactions</h2><p>Credits ka aana-jana — bets, top-ups, bonus aur jeet. Neeche filter se chhanto.</p></div></div>
+              <div class="tx-filters" id="txFilters">
+                <button class="active" onclick="filterTx('all',this)">All</button>
+                <button onclick="filterTx('topup',this)">Top-Up</button>
+                <button onclick="filterTx('bonus',this)">Bonus</button>
+                <button onclick="filterTx('bet',this)">Bets</button>
+                <button onclick="filterTx('win',this)">Winnings</button>
+                <button onclick="filterTx('refund',this)">Refunds / Cash Out</button>
+              </div>
+              <div id="txList"></div>
+            </div>
+          </div>
+
+          <!-- DEPOSIT SETTINGS — EMPTY, FOR LATER / LICENCE ONLY -->
+          <div class="card" style="margin-top:16px">
+            <div class="card-h">
+              <div><h2>Deposit Settings</h2><p>Payment details ke liye jagah — abhi inactive hai.</p></div>
+              <span class="badge badge-pending">Inactive — Licence Pending</span>
+            </div>
+            <div style="padding:14px 16px 16px">
+              <div class="notice notice-warn deposit-lock">
+                <div class="lock-ico">🔒</div>
+                <div><strong>For later use only — after a licence is obtained.</strong><br/>
+                Ye section sirf future ke liye rakha gaya hai. Jab tak proper licence nahi milta, <b>koi real-money deposit ON nahi hoga</b>, koi number yahan pehle se bhara hua nahi hai, aur in fields se koi payment process nahi hoti. Abhi ke liye wallet sirf <b>Demo Credits</b> par chalta hai.</div>
+              </div>
+
+              <form class="form-stack" style="margin-top:14px" onsubmit="saveDepositSettings(event)">
+                <div class="grid2" style="gap:12px">
+                  <div class="field">
+                    <label>Easypaisa Number</label>
+                    <input id="depEasypaisa" type="tel" inputmode="numeric" placeholder="" value="" autocomplete="off"/>
+                    <div class="helper" style="text-align:left;margin-top:4px">Blank rakha gaya hai — licence ke baad hi bhara jayega.</div>
+                  </div>
+                  <div class="field">
+                    <label>JazzCash Number</label>
+                    <input id="depJazzcash" type="tel" inputmode="numeric" placeholder="" value="" autocomplete="off"/>
+                    <div class="helper" style="text-align:left;margin-top:4px">Blank rakha gaya hai — koi number prefilled nahi hai.</div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Other Bank Details</label>
+                  <textarea id="depBank" rows="3" placeholder="" autocomplete="off"></textarea>
+                  <div class="helper" style="text-align:left;margin-top:4px">Bank name, account title, IBAN waghera — sirf licence milne ke baad, abhi khali chor dein.</div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button type="submit" class="btn btn-outline" style="width:auto;padding:11px 14px">Save Draft (Display Only)</button>
+                  <button type="button" class="btn btn-green" style="width:auto;padding:11px 14px;opacity:.55;cursor:not-allowed" disabled>Deposit Money — Disabled 🔒</button>
+                </div>
+                <p class="helper" style="text-align:left;margin:0">Save karne se sirf is page par draft nazar ayega — is se deposit enable nahi hota, na koi paisa move hota hai. Demo Credits hi is wallet ka ek-matra active balance hai.</p>
+                <div id="depSavedNote" class="notice notice-green hidden" style="margin-top:4px"></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="notice notice-warn" style="margin-top:12px">⚠️ <strong>Zaroori note:</strong> Pakistan me real-money betting ke liye licence zaroori hai. Bina licence ke asli paison wali betting illegal hai — is liye is site par sirf demo credits hain, koi live Easypaisa / JazzCash deposit nahi hai.</div>
+        </div>
+        <!-- MATCH DETAIL / BETTING PAGE -->
+        <div class="view" id="view-matchdetail">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back — Matches</button><h2>🏏 Match Detail / Betting Page</h2></div>
+          <div id="matchDetailContent"></div>
+        </div>
+
+        <!-- BET SLIP PAGE -->
+        <div class="view" id="view-betslip">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>🎫 Bet Slip Page</h2></div>
+          <div class="card">
+            <div class="card-h"><div><h2>Bet Slip — Single / Multiple / System</h2><p>Mode chuno, stake lagao, payout dekho aur bet place karo. Sab demo credits me.</p></div><button class="icon-btn" style="background:var(--surface2);color:var(--text);border-color:var(--line)" onclick="clearSlip()">Clear</button></div>
+            <div class="slip-body">
+              <div class="mode-toggle" role="tablist">
+                <button id="modeBtn-single2" class="active" onclick="setSlipMode('single')">Single</button>
+                <button id="modeBtn-multiple2" onclick="setSlipMode('multiple')">Multiple / Acca</button>
+                <button id="modeBtn-system2" onclick="setSlipMode('system')">System</button>
+              </div>
+              <div class="field hidden" id="systemTypeWrap2" style="margin-top:10px">
+                <label>System Type</label>
+                <select id="systemType2" onchange="syncSystemType(this.value)"><option value="2/3">2/3 — 3 combinations</option><option value="1/2">1/2 — 2 combinations</option><option value="2/4">2/4 — 6 combinations</option></select>
+              </div>
+              <div id="slipPageItems" style="margin-top:12px"></div>
+              <div id="slipPageEmpty" class="empty">Abhi slip khali hai.<br/>Home page se odds select karo 👆</div>
+              <div id="slipPageForm" class="hidden">
+                <div class="field" style="margin-top:12px">
+                  <label>Stake (Demo Credits)</label>
+                  <input id="stakeInputPage" type="number" min="10" step="10" value="500" oninput="syncStakePage(this.value)"/>
+                  <div class="quick"><button onclick="setStakeBoth(100)">100</button><button onclick="setStakeBoth(250)">250</button><button onclick="setStakeBoth(500)">500</button><button onclick="setStakeBoth(1000)">1,000</button><button onclick="setStakeBoth(2500)">2,500</button></div>
+                </div>
+                <div class="summary">
+                  <div><span>Mode</span><b id="sumMode2">Single</b></div>
+                  <div><span>Selections</span><b id="sumCount2">0</b></div>
+                  <div><span>Combined Odds</span><b id="sumOdds2">—</b></div>
+                  <div><span>Total Stake</span><b id="sumStake2">0</b></div>
+                  <div><span>Potential Payout</span><b id="sumPayout2" style="color:var(--green)">0</b></div>
+                  <div class="total"><span>Potential Profit</span><span id="sumProfit2">0</span></div>
+                </div>
+                <div id="limitWarn2" class="notice notice-warn hidden" style="margin-top:10px"></div>
+                <button class="btn btn-green" style="margin-top:12px" id="placeBtn2" onclick="placeBets()">Place Bet →</button>
+                <p class="helper" style="margin-top:8px">Demo limit (Profile / Limits page) se zyada stake nahi lagega. Match shuru hone se pehle My Bets se cancel ho sakta hai.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEADERBOARD PAGE -->
+        <div class="view" id="view-leaderboard">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>🏆 Leaderboard Page</h2></div>
+          <div class="card">
+            <div class="card-h"><div><h2>Top Players — Demo Credits</h2><p>Ye demo leaderboard hai — players aur credits sirf misaal ke liye hain, koi asli paisa nahi. Tumhari live rank tumhare demo balance se banti hai.</p></div><span class="badge badge-won">DEMO</span></div>
+            <div id="leaderboardList" style="margin-top:8px"></div>
+            <div style="padding:14px 16px"><p class="helper" style="text-align:left">Apni rank upar le jane ke liye bets jeeto aur daily bonus claim karo — sab demo credits me.</p></div>
+          </div>
+        </div>
+
+        <!-- PROFILE PAGE -->
+        <div class="view" id="view-profile">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>👤 Profile Page</h2></div>
+          <div class="card" style="padding:18px">
+            <div style="display:flex;gap:12px;align-items:center"><span class="avatar" id="profileAvatar" style="background:var(--green);width:52px;height:52px;font-size:20px">P</span><div><b id="profileName" style="font-size:18px">Player</b><div id="profileId" style="color:var(--muted);font-size:13px">—</div><span class="badge badge-won">DEMO ACCOUNT • 18+</span></div></div>
+            <div style="margin-top:14px">
+              <div class="kv"><span>Demo Balance</span><b>🪙 <span id="profileBalance">10,000</span> credits</b></div>
+              <div class="kv"><span>Total Bets</span><b id="profileBets">0</b></div>
+              <div class="kv"><span>Won / Lost</span><b id="profileWL">0 / 0</b></div>
+              <div class="kv"><span>Open Bets</span><b id="profileOpen">0</b></div>
+              <div class="kv"><span>Leaderboard Rank</span><b id="profileRank">—</b></div>
+              <div class="kv"><span>Account Type</span><b>Demo Only — No Real Money</b></div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+              <button class="btn btn-green" style="width:auto;padding:11px 14px" onclick="goPage('wallet')">Wallet kholo</button>
+              <button class="btn btn-outline" style="width:auto;padding:11px 14px" onclick="goPage('settings')">Limits &amp; Settings</button>
+              <button class="btn btn-outline" style="width:auto;padding:11px 14px" onclick="logout()">Logout</button>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-h"><div><h2>🔔 My Reminders — Demo Notifications</h2><p>Matches page par 🔔 dabane se reminder yahan aata hai. Ye sirf is page ke andar demo notification hai — koi SMS/email nahi jata.</p></div></div>
+            <div id="reminderList" style="padding:6px 16px 16px"></div>
+          </div>
+        </div>
+
+        <!-- LIMITS & SETTINGS PAGE -->
+        <div class="view" id="view-settings">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>⚙️ Limits &amp; Settings Page</h2></div>
+          <div class="card" style="padding:18px">
+            <h2 style="font-family:Archivo,sans-serif;margin:0 0 4px;font-size:18px">Responsible Play — Demo Limits</h2>
+            <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Apna demo limit khud set karo. Limit se zyada stake slip me block ho jayega. Ye tools aadat ko control me rakhne ke liye hain.</p>
+            <div class="form-stack">
+              <div class="field"><label>Max Stake Per Bet (Demo Credits)</label><input id="limitPerBet" type="number" min="10" step="10" value="5000"/></div>
+              <div class="field"><label>Max Total Stake Per Day (Demo Credits)</label><input id="limitDaily" type="number" min="10" step="10" value="10000"/><div class="helper" style="text-align:left;margin-top:4px">Aaj ka istemal shuda: <b id="dailyUsedLabel">0</b> credits</div></div>
+              <div class="field"><label>Odds Format</label>
+                <div class="seg" style="width:fit-content"><button id="oddsFmtDec" class="active" onclick="setOddsFormat('decimal')">Decimal (1.90)</button><button id="oddsFmtFrac" onclick="setOddsFormat('fractional')">Fractional (9/10)</button></div>
+              </div>
+              <div class="field"><label>Appearance</label>
+                <div class="seg" style="width:fit-content"><button onclick="setTheme('light')">☀️ Light</button><button onclick="setTheme('dark')">🌙 Dark</button><button onclick="setTheme('system')">Auto (System)</button></div>
+              </div>
+              <button class="btn btn-green" onclick="saveLimits()">Save Limits &amp; Settings →</button>
+              <div class="notice notice-warn">🔞 <b>18+ Warning:</b> Ye site sirf baron (18+) ke liye hai. Demo hone ke bawajood betting ki aadat lag sakti hai — limit hamesha on rakho, aur asli paison wali betting se bacho. Koi real-money deposit/withdrawal yahan mumkin nahi.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HELP / FAQ PAGE -->
+        <div class="view" id="view-help">
+          <div class="page-head"><button class="back-btn" onclick="goBack()">← Back</button><h2>❓ Help / FAQ Page</h2></div>
+          <div class="card">
+            <div class="card-h"><div><h2>Help &amp; FAQ — TA7</h2><p>Aam sawalon ke jawab. Ye poori site demo hai — koi asli paisa nahi.</p></div></div>
+            <details class="faq"><summary>Ye site asli betting hai ya demo?</summary><p>Sirf demo. Tamam credits virtual hain, in ki koi cash value nahi, na deposit hota hai na withdrawal. Real-money betting ke liye licence chahiye jo abhi nahi hai.</p></details>
+            <details class="faq"><summary>Demo credits khatam ho jayen to?</summary><p>Wallet page se kabhi bhi free top-up (+500 / +1,000 / +5,000) ya roz ka Daily Bonus +1,000 claim kar lo. Koi payment nahi chahiye.</p></details>
+            <details class="faq"><summary>Single, Multiple aur System bet me kya farq hai?</summary><p>Single: har selection alag bet. Multiple/Acca: sab selections ek bet me, odds multiply hote hain, sab jeetna zaroori hai (3+ par +10% demo boost). System: combinations banti hain (maslan 2/3) — ek selection haar bhi jaye to kuch combinations jeet sakti hain.</p></details>
+            <details class="faq"><summary>Bet cancel kab ho sakti hai?</summary><p>Sirf tab jab match abhi shuru nahi hua (Upcoming). My Bets page me Pending bet par Cancel button se poora stake wapas wallet me aa jata hai. Live match ki bet cancel nahi hoti — us par Cash Out demo hai.</p></details>
+            <details class="faq"><summary>Cash Out (Full / Partial) kaise kaam karta hai?</summary><p>Pending bet par Cash Out dabao: Full se poori bet demo value par settle ho jati hai; Partial (50%) se aadhi value milti hai aur baqi bet aadhe stake par chalti rehti hai. Value live odds ke hisaab se demo me badalti hai.</p></details>
+            <details class="faq"><summary>Live odds kyun badalte hain?</summary><p>Live/In-Play matches me demo odds har kuch seconds me score ke hisaab se upar-neeche hote hain — bilkul asli in-play betting ki practice ke liye.</p></details>
+            <details class="faq"><summary>Deposit Settings khali kyun hain?</summary><p>Easypaisa / JazzCash / Other Bank fields jaan kar bilkul blank rakhe gaye hain aur Deposit button disabled hai. Jab tak licence nahi milta koi real-money deposit nahi hoga — sirf demo credits chalenge.</p></details>
+            <details class="faq"><summary>Demo limit kaise set karun?</summary><p>Limits &amp; Settings page se per-bet aur daily demo limit lagao. Limit se zyada stake place nahi hoga. 18+ warning hamesha on rehti hai.</p></details>
+            <details class="faq"><summary>Result kaise settle hota hai?</summary><p>Demo me My Bets page ka “Simulate Results” button pending bets ko demo result se settle karta hai. Koi result rigged nahi hai — ye sirf practice flow hai, kisi ki bet jaan kar harwayi/jitwayi nahi jati.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <!-- BET SLIP -->
+      <aside class="card slip">
+        <div class="card-h"><div><h2>🎫 Bet Slip</h2><p id="slipSub">Koi selection nahi hai</p></div><button class="icon-btn" style="background:var(--surface2);color:var(--text);border-color:var(--line)" onclick="clearSlip()">Clear</button></div>
+        <div class="slip-body">
+          <div id="slipItems"></div>
+          <div id="slipEmpty" class="empty">Odds par click karo,<br/>selection yahan ayegi 👆</div>
+          <div id="slipForm" class="hidden">
+            <div class="mode-toggle" role="tablist">
+              <button id="modeBtn-single" class="active" onclick="setSlipMode('single')">Single</button>
+              <button id="modeBtn-multiple" onclick="setSlipMode('multiple')">Multiple / Acca</button>
+              <button id="modeBtn-system" onclick="setSlipMode('system')">System</button>
+            </div>
+            <div class="field hidden" id="systemTypeWrap" style="margin-top:10px">
+              <label>System Type</label>
+              <select id="systemType" onchange="syncSystemType(this.value)"><option value="2/3">2/3 — 3 combinations</option><option value="1/2">1/2 — 2 combinations</option><option value="2/4">2/4 — 6 combinations</option></select>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px;flex-wrap:wrap">
+              <span style="font-size:12px;font-weight:800;color:var(--muted)">ODDS FORMAT</span>
+              <div class="seg"><button id="oddsFmtDec2" class="active" onclick="setOddsFormat('decimal')">Decimal</button><button id="oddsFmtFrac2" onclick="setOddsFormat('fractional')">Fractional</button></div>
+            </div>
+            <div class="field" style="margin-top:12px">
+              <label id="stakeLabel">Stake — per bet (Demo Credits)</label>
+              <input id="stakeInput" type="number" min="10" step="10" value="500" oninput="renderSlip()"/>
+              <div class="quick">
+                <button onclick="setStake(100)">100</button><button onclick="setStake(250)">250</button><button onclick="setStake(500)">500</button><button onclick="setStake(1000)">1,000</button><button onclick="setStake(2500)">2,500</button>
+              </div>
+            </div>
+            <div class="summary">
+              <div><span>Mode</span><b id="sumMode">Single</b></div>
+              <div><span>Selections</span><b id="sumCount">0</b></div>
+              <div><span>Combined Odds</span><b id="sumOdds">—</b></div>
+              <div><span>Total Stake</span><b id="sumStake">0</b></div>
+              <div><span>Potential Payout</span><b id="sumPayout" style="color:var(--green)">0</b></div>
+              <div class="total"><span>Potential Profit</span><span id="sumProfit">0</span></div>
+            </div>
+            <div id="limitWarn" class="notice notice-warn hidden" style="margin-top:10px"></div>
+            <button class="btn btn-green" style="margin-top:12px" id="placeBtn" onclick="placeBets()">Place Bet →</button>
+            <button class="btn btn-outline" style="margin-top:8px" onclick="goPage('betslip')">🎫 Full Bet Slip Page kholo →</button>
+            <p class="helper" style="margin-top:8px" id="slipModeNote">Single mode: har selection alag bet banegi. Stake wallet se demo credits me katega.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <strong style="color:var(--text)">TA7 — Demo Betting Site</strong> • Ye poori site sirf demo / practice ke liye hai. Tamam balance, odds ke results aur payouts virtual demo credits me hain — in ki koi asal qeemat nahi, na ye cash me convert, deposit ya withdraw ho sakte hain.<br/>
+  Deposit Settings wala section khali rakha gaya hai aur sirf us waqt ke liye hai jab proper licence hasil ho jaye — tab tak real-money deposit band hai. 18+ only. Betting me nuqsan ka risk hota hai, zimmedari se khelein — demo par practice karna hi is site ka maqsad hai.<br/>
+  <span style="display:inline-flex;gap:10px;flex-wrap:wrap;margin-top:8px"><a href="#" onclick="goPage('matches');return false">Home / Matches</a> • <a href="#" onclick="goPage('betslip');return false">Bet Slip</a> • <a href="#" onclick="goPage('mybets');return false">My Bets</a> • <a href="#" onclick="goPage('wallet');return false">Wallet</a> • <a href="#" onclick="goPage('leaderboard');return false">Leaderboard</a> • <a href="#" onclick="goPage('profile');return false">Profile</a> • <a href="#" onclick="goPage('settings');return false">Limits &amp; Settings</a> • <a href="#" onclick="goPage('help');return false">Help / FAQ</a></span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var state={user:null,balance:10000,slip:[],bets:[],tx:[],betFilter:'all',matchFilter:'all'};
+var MATCHES=[
+ {id:1,league:'T20 International • LIVE',status:'live',cat:'pak t20',time:'LIVE — 2nd Innings',venue:'Gaddafi Stadium, Lahore',teamA:{name:'Pakistan',short:'PAK',color:'#0a7a3e',score:'186/4 (20 ov)'},teamB:{name:'Australia',short:'AUS',color:'#b58900',score:'92/2 (9.3 ov) • need 95 off 63'},oddsA:1.72,oddsB:2.15},
+ {id:2,league:'PSL 2026 • T20',status:'upcoming',cat:'pak t20',time:'Today • 7:30 PM PKT',venue:'National Stadium, Karachi',teamA:{name:'Lahore Qalandars',short:'LQ',color:'#0a7a3e',score:'—'},teamB:{name:'Karachi Kings',short:'KK',color:'#0b4ea2',score:'—'},oddsA:1.90,oddsB:1.90},
+ {id:3,league:'T20 International',status:'upcoming',cat:'t20',time:'Tomorrow • 6:00 PM PKT',venue:'Dubai International Stadium',teamA:{name:'India',short:'IND',color:'#2563eb',score:'—'},teamB:{name:'England',short:'ENG',color:'#7c2d12',score:'—'},oddsA:1.80,oddsB:2.05},
+ {id:4,league:'ODI Series • LIVE',status:'live',cat:'',time:'LIVE — 38th Over',venue:'Rawalpindi Cricket Stadium',teamA:{name:'Pakistan',short:'PAK',color:'#0a7a3e',score:'264/6 (42 ov)'},teamB:{name:'New Zealand',short:'NZ',color:'#111827',score:'Yet to bat'},oddsA:1.65,oddsB:2.30},
+ {id:5,league:'PSL 2026 • T20',status:'upcoming',cat:'pak t20',time:'Wed • 7:30 PM PKT',venue:'Multan Cricket Stadium',teamA:{name:'Islamabad United',short:'IU',color:'#dc2626',score:'—'},teamB:{name:'Multan Sultans',short:'MS',color:'#059669',score:'—'},oddsA:2.00,oddsB:1.82},
+ {id:6,league:'Test Championship',status:'upcoming',cat:'',time:'Fri • 10:00 AM PKT',venue:'Lord\'s, London',teamA:{name:'England',short:'ENG',color:'#7c2d12',score:'—'},teamB:{name:'South Africa',short:'SA',color:'#007749',score:'—'},oddsA:2.10,oddsB:1.95}
+];
+var EXTRAS=[
+ {key:'runs',label:'Total Match Runs — Over 320.5',odds:1.87},
+ {key:'sixes',label:'Total Sixes — Over 12.5',odds:1.92},
+ {key:'bat',label:'Top Batsman — Babar Azam (PAK vs AUS)',odds:3.40}
+];
+function fmt(n){return Math.round(n).toLocaleString('en-US')}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2600)}
+function isSelected(matchId,pick){return state.slip.some(function(s){return s.matchId===matchId && s.pick===pick})}
+function renderMatches(){
+  var list=document.getElementById('matchList');
+  var filtered=MATCHES.filter(function(m){
+    if(state.matchFilter==='all')return true;
+    if(state.matchFilter==='live')return m.status==='live';
+    if(state.matchFilter==='upcoming')return m.status==='upcoming';
+    if(state.matchFilter==='pak')return m.cat.indexOf('pak')>-1;
+    if(state.matchFilter==='t20')return m.cat.indexOf('t20')>-1;
+    return true;
+  });
+  if(!filtered.length){list.innerHTML='<div style="padding:20px;color:var(--muted)">Is filter me koi match nahi hai.</div>';return}
+  list.innerHTML=filtered.map(function(m){
+    var selA=isSelected(m.id,m.teamA.name), selB=isSelected(m.id,m.teamB.name);
+    var extraHtml='';
+    if(m.id===1){ extraHtml='<div class="market-label">More Markets — PAK vs AUS</div><div class="extra-markets">'+EXTRAS.map(function(e){var s=isSelected(99,e.label);return '<button class="mini-odds '+(s?'selected':'')+'" onclick="toggleExtra(\''+e.key+'\')"><span>'+e.label+'</span><b>Odds '+e.odds.toFixed(2)+'</b></button>'}).join('')+'</div>'}
+    return '<article class="match">'
+      +'<div class="match-top"><span class="league">'+m.league+'</span><span class="meta">'+(m.status==='live'?'<span class="live-dot">LIVE</span> • ':'')+m.time+' • '+m.venue+'</span></div>'
+      +'<div class="teams">'
+      +'<div class="team-row"><span class="team-name"><span class="flag" style="background:'+m.teamA.color+'">'+m.teamA.short+'</span>'+m.teamA.name+'</span><span class="score">'+m.teamA.score+'</span></div>'
+      +'<div class="team-row"><span class="team-name"><span class="flag" style="background:'+m.teamB.color+'">'+m.teamB.short+'</span>'+m.teamB.name+'</span><span class="score">'+m.teamB.score+'</span></div>'
+      +'</div>'
+      +'<div class="market-label">Match Winner</div>'
+      +'<div class="odds-grid">'
+      +'<button class="odds-btn '+(selA?'selected':'')+'" onclick="togglePick('+m.id+',\''+m.teamA.name.replace(/'/g,"\\'")+'\','+m.oddsA+')"><span><small>Back</small><strong>'+m.teamA.name+'</strong></span><span class="odds-val">'+m.oddsA.toFixed(2)+'</span></button>'
+      +'<button class="odds-btn '+(selB?'selected':'')+'" onclick="togglePick('+m.id+',\''+m.teamB.name.replace(/'/g,"\\'")+'\','+m.oddsB+')"><span><small>Back</small><strong>'+m.teamB.name+'</strong></span><span class="odds-val">'+m.oddsB.toFixed(2)+'</span></button>'
+      +'</div>'+extraHtml+'</article>';
+  }).join('');
+}
+function filterMatches(f,btn){state.matchFilter=f;btn.parentElement.querySelectorAll('button').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderMatches()}
+function matchLabel(id){if(id===99)return 'Pakistan vs Australia — Special Markets'; var m=MATCHES.find(function(x){return x.id===id}); return m? m.teamA.name+' vs '+m.teamB.name : 'Match'}
+function togglePick(matchId,pick,odds){
+  var idx=state.slip.findIndex(function(s){return s.matchId===matchId});
+  var existing=state.slip.find(function(s){return s.matchId===matchId && s.pick===pick});
+  if(existing){state.slip=state.slip.filter(function(s){return !(s.matchId===matchId && s.pick===pick)})}
+  else{
+    if(idx>-1) state.slip.splice(idx,1);
+    state.slip.push({matchId:matchId,matchLabel:matchLabel(matchId),pick:pick,odds:odds,market:'Match Winner'});
+  }
+  renderMatches(); renderSlip();
+}
+function toggleExtra(key){
+  var e=EXTRAS.find(function(x){return x.key===key}); if(!e)return;
+  var existing=state.slip.find(function(s){return s.matchId===99 && s.pick===e.label});
+  if(existing) state.slip=state.slip.filter(function(s){return !(s.matchId===99 && s.pick===e.label)});
+  else state.slip.push({matchId:99,matchLabel:matchLabel(99),pick:e.label,odds:e.odds,market:'Special Market'});
+  renderMatches(); renderSlip();
+}
+function removeSlip(i){state.slip.splice(i,1);renderMatches();renderSlip()}
+function clearSlip(){state.slip=[];renderMatches();renderSlip()}
+function setStake(v){document.getElementById('stakeInput').value=v;renderSlip()}
+function getStake(){var v=parseFloat(document.getElementById('stakeInput').value||0);return isNaN(v)?0:v}
+function renderSlip(){
+  var box=document.getElementById('slipItems'), empty=document.getElementById('slipEmpty'), form=document.getElementById('slipForm'), sub=document.getElementById('slipSub');
+  document.getElementById('balanceLabel').textContent=fmt(state.balance);
+  document.getElementById('walletBalance').textContent=fmt(state.balance);
+  if(!state.slip.length){box.innerHTML='';empty.classList.remove('hidden');form.classList.add('hidden');sub.textContent='Koi selection nahi hai';return}
+  empty.classList.add('hidden');form.classList.remove('hidden');sub.textContent=state.slip.length+' selection(s) — Single bets';
+  box.innerHTML=state.slip.map(function(s,i){return '<div class="slip-item"><div class="slip-item-top"><div><b>'+s.pick+'</b><p>'+s.matchLabel+' • '+s.market+'</p></div><button class="remove" onclick="removeSlip('+i+')">×</button></div><div style="margin-top:6px;font-size:13px">Odds <span class="slip-odds">'+s.odds.toFixed(2)+'</span></div></div>'}).join('');
+  var stake=getStake(), totalStake=stake*state.slip.length, payout=state.slip.reduce(function(sum,s){return sum+stake*s.odds},0);
+  document.getElementById('sumCount').textContent=state.slip.length;
+  document.getElementById('sumStake').textContent=fmt(totalStake)+' credits';
+  document.getElementById('sumPayout').textContent=fmt(payout)+' credits';
+  document.getElementById('sumProfit').textContent=fmt(payout-totalStake)+' credits';
+  document.getElementById('placeBtn').disabled=!(stake>=10 && totalStake<=state.balance);
+  document.getElementById('placeBtn').textContent= totalStake>state.balance ? 'Balance kam hai — Free Credits lo' : 'Place Bet — '+fmt(totalStake)+' Credits →';
+}
+function addTx(type,detail,amount){state.tx.unshift({type:type,detail:detail,amount:amount,time:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})});renderTx()}
+function renderTx(){
+  var el=document.getElementById('txList');
+  if(!state.tx.length){el.innerHTML='<div style="padding:16px;color:var(--muted);font-size:14px">Abhi koi transaction nahi hai.</div>';return}
+  el.innerHTML=state.tx.slice(0,12).map(function(t){var col=t.amount>=0?'var(--green)':'var(--red)';return '<div class="tx-row"><div><b style="font-size:14px">'+t.type+'</b><div style="color:var(--muted);font-size:12px">'+t.detail+' • '+t.time+'</div></div><b style="color:'+col+'">'+(t.amount>=0?'+':'')+fmt(t.amount)+'</b></div>'}).join('');
+}
+function renderBets(){
+  var el=document.getElementById('betHistory');
+  document.getElementById('betCountBadge').textContent=state.bets.length? '('+state.bets.filter(function(b){return b.status==='Pending'}).length+' open)':'';
+  var filtered=state.bets.filter(function(b){return state.betFilter==='all'||b.status===state.betFilter});
+  if(!filtered.length){el.innerHTML='<div style="padding:22px 16px;color:var(--muted)">Abhi koi bet nahi hai. Matches se odds select karke pehli bet lagao 🏏</div>';return}
+  el.innerHTML=filtered.map(function(b){return '<div class="bet-row"><div><b>'+b.pick+'</b> <span class="badge badge-'+b.status.toLowerCase()+'">'+b.status+'</span><div style="color:var(--muted);font-size:12px;margin-top:3px">'+b.matchLabel+' • '+b.market+' • Odds '+b.odds.toFixed(2)+' • '+b.date+'</div></div><div style="text-align:right"><div style="font-size:13px;color:var(--muted)">Stake '+fmt(b.stake)+'</div><b style="color:var(--green)">Payout '+fmt(b.potential)+'</b></div></div>'}).join('');
+}
+function filterBets(f,btn){state.betFilter=f;btn.parentElement.querySelectorAll('button').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderBets()}
+function placeBets(){
+  var stake=getStake(); if(stake<10){toast('Kam se kam stake 10 credits hai');return}
+  var total=stake*state.slip.length; if(total>state.balance){toast('Balance kam hai — Wallet se free credits lo');return}
+  state.balance-=total;
+  state.slip.forEach(function(s){state.bets.unshift({pick:s.pick,matchLabel:s.matchLabel,market:s.market,odds:s.odds,stake:stake,potential:Math.round(stake*s.odds),status:'Pending',date:new Date().toLocaleDateString()+' '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})})});
+  addTx('Bet Placed', state.slip.length+' single bet(s) @ '+fmt(stake)+' each', -total);
+  toast('✅ Bet lag gayi! '+fmt(total)+' demo credits kate.');
+  state.slip=[]; renderMatches(); renderSlip(); renderBets();
+}
+function settleAll(){
+  var pending=state.bets.filter(function(b){return b.status==='Pending'});
+  if(!pending.length){toast('Koi pending bet nahi hai settle karne ke liye');return}
+  var wonPayout=0;
+  pending.forEach(function(b){ if(Math.random()>0.45){b.status='Won'; wonPayout+=b.potential;} else {b.status='Lost';} });
+  if(wonPayout>0){state.balance+=wonPayout; addTx('Bet Won — Payout','Simulated result settlement', wonPayout);}
+  renderSlip(); renderBets(); toast(wonPayout>0? '🎉 Kuch bets jeet gayin! +'+fmt(wonPayout)+' credits wallet me.' : 'Result settle ho gaya — is dafa koi jeet nahi, dobara try karo.');
+}
+function addCredits(amount){
+  if(amount===10000 && state.balance!==10000){ /* reset logic */ var diff=10000-state.balance; state.balance=10000; addTx('Wallet Reset','Balance reset to 10,000 demo credits', diff); toast('Wallet reset — 10,000 demo credits'); renderSlip(); return; }
+  state.balance+=amount; addTx('Free Demo Top-Up','+'+fmt(amount)+' demo credits (free, no payment)', amount); toast('🪙 +'+fmt(amount)+' FREE demo credits mil gaye!'); renderSlip();
+}
+function saveDepositSettings(e){
+  e.preventDefault();
+  var ep=document.getElementById('depEasypaisa').value.trim(), jc=document.getElementById('depJazzcash').value.trim(), bank=document.getElementById('depBank').value.trim();
+  var note=document.getElementById('depSavedNote');
+  note.classList.remove('hidden');
+  if(!ep && !jc && !bank){ note.textContent='Draft khali hai — bilkul theek hai. Ye section licence milne tak khali hi rehna chahiye. Demo Credits hi active balance hai.'; }
+  else{ note.textContent='Draft is page par note kar liya gaya hai (sirf display ke liye). Is se koi deposit ON nahi hua — real-money deposit licence milne tak band rahega, aur koi payment in details par process nahi hogi.'; }
+  toast('Deposit Settings draft saved — deposits ab bhi DISABLED hain 🔒');
+}
+/* AUTH */
+var authMode='login';
+function setAuthMode(m){authMode=m;document.getElementById('tabLogin').classList.toggle('active',m==='login');document.getElementById('tabSignup').classList.toggle('active',m==='signup');document.getElementById('nameField').style.display=m==='signup'?'block':'none';document.getElementById('authTitle').textContent=m==='signup'?'Create account — 10,000 FREE credits':'Welcome back';document.getElementById('authSub').textContent=m==='signup'?'Sign up karte hi wallet me 10,000 demo credits milenge. Koi card, koi Easypaisa nahi chahiye.':'Gmail ya phone number + password se login karo.';document.getElementById('authBtn').textContent=m==='signup'?'Create Account — Claim 10,000 Credits →':'Log In →';}
+function showAuth(m){setAuthMode(m);window.scrollTo({top:document.querySelector('.auth-wrap').offsetTop-80,behavior:'smooth'})}
+function normalizePkPhone(v){ var digits=String(v).replace(/\D/g,''); if(digits.indexOf('0092')===0)digits=digits.slice(4); else if(digits.indexOf('92')===0)digits=digits.slice(2); if(digits.charAt(0)==='0')digits=digits.slice(1); return digits; }
+function validateId(v){v=String(v).trim(); if(/^[^\s@]+@gmail\.com$/i.test(v))return true; return /^3\d{9}$/.test(normalizePkPhone(v))}
+function enterApp(name,id){
+  name=String(name).replace(/[<>&"']/g,'').trim()||'Player';
+  state.user={name:name,id:id};
+  document.getElementById('authView').classList.add('hidden');
+  document.getElementById('appView').classList.remove('hidden');
+  document.getElementById('topActionsGuest').classList.add('hidden');
+  document.getElementById('topActionsUser').classList.remove('hidden');
+  document.getElementById('userChip').textContent='👤 '+name;
+  document.getElementById('welcomeTitle').textContent='Assalam-o-Alaikum, '+name+' 👋';
+  if(!state.tx.length) addTx('Welcome Bonus','New account — 10,000 FREE demo credits',10000);
+  renderMatches(); renderSlip(); renderBets(); renderTx();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function handleAuth(e){
+  e.preventDefault();
+  var id=document.getElementById('inputId').value, pass=document.getElementById('inputPass').value, name=document.getElementById('inputName').value.trim();
+  if(!validateId(id)){toast('Sahi Gmail (@gmail.com) ya Pakistani mobile number likho');return}
+  if(pass.length<6){toast('Password kam se kam 6 characters ka ho');return}
+  if(!name){ name=id.includes('@')? id.split('@')[0].replace(/[._]/g,' ') : 'Player'; name=name.charAt(0).toUpperCase()+name.slice(1); }
+  toast(authMode==='signup'?'🎉 Account ban gaya — 10,000 FREE credits mil gaye!':'Welcome back!');
+  enterApp(name,id);
+}
+function quickDemo(){ enterApp('Demo Player','demo@gmail.com'); toast('⚡ Demo login ho gaya — 10,000 credits ready hain!'); }
+function logout(){ location.reload(); }
+function switchView(v){
+  document.querySelectorAll('[data-nav]').forEach(function(b){b.classList.toggle('active',b.dataset.nav===v)});
+  document.querySelectorAll('.view').forEach(function(el){el.classList.remove('active')});
+  document.getElementById('view-'+v).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderMatches();
+</script>
+<script>
+/* ===== TA7 — Pages, Live, Slip Modes, Wallet (all demo) ===== */
+state.slipMode='single'; state.systemType='2/3'; state.oddsFormat='decimal';
+state.txFilter='all'; state.searchQuery=''; state.tournamentFilter='all';
+state.favs={}; state.reminders={}; state.dailyBonusDate=null;
+state.limitPerBet=5000; state.limitDaily=10000; state.dailyStaked=0;
+state.betSeq=1;
+state.pageHistory=[]; state.currentPage='matches'; state.currentMatchId=null;
+var TODAYSTR=new Date().toDateString();
+var MATCH_EXTRA={
+ 1:{tournament:'T20 International',formA:['W','W','L','W','W'],formB:['L','W','W','L','L'],h2h:'Last 10 T20Is: Pakistan 6 — Australia 4',statA:62,statLabel:'Win probability (odds se)',avgA:'182',avgB:'168',live:{bat:'Australia',runs:92,wkts:2,balls:57,target:187}},
+ 2:{tournament:'PSL 2026',formA:['W','L','W','W','D'],formB:['L','W','L','W','L'],h2h:'PSL history: Lahore 5 — Karachi 5 (last 10)',statA:50,statLabel:'Win probability (odds se)',avgA:'176',avgB:'174'},
+ 3:{tournament:'T20 International',formA:['W','W','W','L','W'],formB:['W','L','W','L','W'],h2h:'Last 10 T20Is: India 6 — England 4',statA:53,statLabel:'Win probability (odds se)',avgA:'179',avgB:'171'},
+ 4:{tournament:'ODI Series',formA:['W','L','W','W','L'],formB:['L','W','L','L','W'],h2h:'Last 10 ODIs: Pakistan 5 — New Zealand 5',statA:58,statLabel:'Win probability (odds se)',avgA:'287',avgB:'279',live:{bat:'Pakistan',runs:264,wkts:6,balls:252,target:0}},
+ 5:{tournament:'PSL 2026',formA:['L','W','W','L','W'],formB:['W','W','L','W','L'],h2h:'PSL history: Islamabad 6 — Multan 4 (last 10)',statA:48,statLabel:'Win probability (odds se)',avgA:'173',avgB:'178'},
+ 6:{tournament:'Test Championship',formA:['D','W','L','D','W'],formB:['W','D','W','L','D'],h2h:'Last 10 Tests: England 4 — South Africa 3, Drawn 3',statA:49,statLabel:'Win probability (odds se)',avgA:'342',avgB:'338'}
+};
+MATCHES.forEach(function(m){var x=MATCH_EXTRA[m.id]||{};m.tournament=x.tournament||'T20 International';m.formA=x.formA||['W','L','W','L','W'];m.formB=x.formB||['L','W','L','W','L'];m.h2h=x.h2h||'—';m.avgA=x.avgA||'—';m.avgB=x.avgB||'—';if(x.live)m.live=x.live;});
+function gcd(a,b){return b?gcd(b,a%b):a}
+function fmtOdds(d){ if(state.oddsFormat==='decimal')return (+d).toFixed(2); var num=Math.round((d-1)*100),den=100,g=gcd(num,den); return (num/g)+'/'+(den/g); }
+function esc(s){return String(s).replace(/'/g,"\\'")}
+function formDots(f){return '<span class="form-dots">'+f.map(function(r){return '<i class="'+r.toLowerCase()+'">'+r+'</i>'}).join('')+'</span>'}
+function matchById(id){return MATCHES.find(function(m){return m.id===id})}
+function legStatus(matchId){ if(matchId===99)return 'live'; var m=matchById(matchId); return m?m.status:'upcoming'; }
+/* ---------- ROUTER (alag-alag pages) ---------- */
+var PAGES=['matches','matchdetail','betslip','mybets','wallet','leaderboard','profile','settings','help'];
+function goPage(name,push){
+  if(!state.user){ toast('Pehle Login ya Sign Up karo — phir tamam pages khulenge'); showAuthPage('login'); return; }
+  if(push!==false&&state.currentPage&&state.currentPage!==name)state.pageHistory.push(state.currentPage);
+  state.currentPage=name;
+  PAGES.forEach(function(p){var el=document.getElementById('view-'+p);if(el)el.classList.toggle('active',p===name);});
+  document.querySelectorAll('[data-nav]').forEach(function(b){b.classList.toggle('active',b.dataset.nav===name||(name==='matchdetail'&&b.dataset.nav==='matches'))});
+  var aside=document.querySelector('aside.slip'); if(aside)aside.style.display=(name==='matches'||name==='matchdetail')?'':'none';
+  if(name==='leaderboard')renderLeaderboard();
+  if(name==='profile')renderProfile();
+  if(name==='betslip')renderSlip();
+  if(name==='wallet')renderTx();
+  if(name==='mybets')renderBets();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goBack(){ var prev=state.pageHistory.pop()||'matches'; goPage(prev,false); }
+function switchView(v){goPage(v)}
+/* ---------- AUTH PAGES ---------- */
+function showAuthPage(p){ document.querySelectorAll('.auth-page').forEach(function(el){el.classList.remove('active')}); var el=document.getElementById('authPage-'+p); if(el)el.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+function setAuthMode(m){showAuthPage(m==='signup'?'signup':'login')}
+function showAuth(m){showAuthPage(m==='signup'?'signup':'login')}
+function handleLogin(e){ e.preventDefault(); var id=document.getElementById('inputIdL').value,pass=document.getElementById('inputPassL').value; if(!validateId(id)){toast('Sahi Gmail (@gmail.com) ya Pakistani mobile number likho');return} if(pass.length<6){toast('Password kam se kam 6 characters ka ho');return} var name=id.includes('@')?id.split('@')[0].replace(/[._]/g,' '):'Player'; name=name.charAt(0).toUpperCase()+name.slice(1); toast('Welcome back!'); enterApp(name,id); }
+function handleSignup(e){ e.preventDefault(); var id=document.getElementById('inputIdS').value,pass=document.getElementById('inputPassS').value,name=document.getElementById('inputNameS').value.trim(); if(!validateId(id)){toast('Sahi Gmail (@gmail.com) ya Pakistani mobile number likho');return} if(pass.length<6){toast('Password kam se kam 6 characters ka ho');return} if(!name){name=id.includes('@')?id.split('@')[0].replace(/[._]/g,' '):'Player'; name=name.charAt(0).toUpperCase()+name.slice(1);} toast('🎉 Account ban gaya — 10,000 FREE demo credits mil gaye!'); enterApp(name,id); }
+function enterApp(name,id){
+  name=String(name).replace(/[<>&"']/g,'').trim()||'Player';
+  state.user={name:name,id:id};
+  document.getElementById('authView').classList.add('hidden');
+  document.getElementById('appView').classList.remove('hidden');
+  document.getElementById('topActionsGuest').classList.add('hidden');
+  document.getElementById('topActionsUser').classList.remove('hidden');
+  document.getElementById('userChip').textContent='👤 '+name;
+  document.getElementById('welcomeTitle').textContent='Assalam-o-Alaikum, '+name+' 👋';
+  if(!state.tx.length)addTx('Welcome Bonus','New account — 10,000 FREE demo credits',10000);
+  state.pageHistory=[]; state.currentPage='matches';
+  renderMatches(); renderSlip(); renderBets(); renderTx(); goPage('matches',false);
+}
+/* ---------- MATCHES: search, filters, live centre, stats ---------- */
+function onTeamSearch(v){state.searchQuery=v.trim().toLowerCase();renderMatches()}
+function onTournamentFilter(v){state.tournamentFilter=v;renderMatches()}
+function toggleFav(id){ state.favs[id]=!state.favs[id]; toast(state.favs[id]?'⭐ Favourites me add ho gaya':'Favourites se hat gaya'); renderMatches(); if(state.currentPage==='matchdetail')renderMatchDetail(); }
+function toggleReminder(id){ var m=matchById(id); state.reminders[id]=!state.reminders[id]; toast(state.reminders[id]?'🔔 Reminder set — match shuru hone par is page me demo notification ayegi: '+m.teamA.name+' vs '+m.teamB.name:'🔔 Reminder hat gaya'); renderMatches(); if(state.currentPage==='matchdetail')renderMatchDetail(); if(state.currentPage==='profile')renderProfile(); }
+function liveChips(m){ if(!m.live)return ''; var L=m.live; var ov=Math.floor(L.balls/6)+'.'+(L.balls%6); var crr=(L.balls? (L.runs/(L.balls/6)):0).toFixed(2); var chips='<span class="score-chip">🏏 '+L.bat+' '+L.runs+'/'+L.wkts+' ('+ov+' ov)</span><span class="score-chip">CRR '+crr+'</span>'; if(L.target){var need=L.target-L.runs,ballsLeft=120-L.balls; chips+='<span class="score-chip">Target '+L.target+'</span><span class="score-chip">Chahiye '+need+' off '+ballsLeft+'</span>'+(ballsLeft?'<span class="score-chip">RRR '+(need/(ballsLeft/6)).toFixed(2)+'</span>':'');} return '<div class="score-detail">'+chips+'</div>'; }
+function renderLiveStrip(){
+  var el=document.getElementById('liveStrip'); if(!el)return;
+  var live=MATCHES.filter(function(m){return m.status==='live'});
+  var lc=document.getElementById('liveCountLabel'); if(lc)lc.textContent=live.length+' Live Now';
+  el.innerHTML=live.length?live.map(function(m){return '<div class="live-card"><b><span class="live-dot">LIVE SCORE CENTRE</span> — '+m.teamA.name+' vs '+m.teamB.name+'</b><p>'+m.teamA.score+' • '+m.teamB.score+'</p>'+liveChips(m)+'<p style="margin-top:6px"><button class="fav-btn" onclick="openMatch('+m.id+')">📊 Poori Detail, Stats &amp; Markets →</button></p></div>'}).join(''):'<div class="live-card"><b>Koi match live nahi</b><p>Upcoming matches neeche dekho.</p></div>';
+}
+function renderMatches(){
+  renderLiveStrip();
+  var list=document.getElementById('matchList'); if(!list)return;
+  var filtered=MATCHES.filter(function(m){
+    if(state.matchFilter==='live'&&m.status!=='live')return false;
+    if(state.matchFilter==='upcoming'&&m.status!=='upcoming')return false;
+    if(state.matchFilter==='pak'&&m.cat.indexOf('pak')<0)return false;
+    if(state.matchFilter==='t20'&&m.cat.indexOf('t20')<0)return false;
+    if(state.matchFilter==='fav'&&!state.favs[m.id])return false;
+    if(state.tournamentFilter!=='all'&&m.tournament!==state.tournamentFilter)return false;
+    if(state.searchQuery){var hay=(m.teamA.name+' '+m.teamB.name+' '+m.tournament+' '+m.league).toLowerCase(); if(hay.indexOf(state.searchQuery)<0)return false;}
+    return true;
+  });
+  if(!filtered.length){list.innerHTML='<div style="padding:20px;color:var(--muted)">Is search/filter me koi match nahi hai. Search saaf karke ya doosra tournament chun kar dekho.</div>';return}
+  list.innerHTML=filtered.map(function(m){
+    var selA=isSelected(m.id,m.teamA.name), selB=isSelected(m.id,m.teamB.name);
+    var statusBadge=m.status==='live'?'<span class="badge badge-live">🔴 LIVE — Chal Raha Hai</span>':'<span class="badge badge-upcoming">🔵 UPCOMING — Aanay Wala</span>';
+    var extraHtml='';
+    if(m.id===1){ extraHtml='<div class="market-label">More Markets — PAK vs AUS</div><div class="extra-markets">'+EXTRAS.map(function(e){var s=isSelected(99,e.label);return '<button class="mini-odds '+(s?'selected':'')+'" onclick="toggleExtra(\''+e.key+'\')"><span>'+e.label+'</span><b>Odds '+fmtOdds(e.odds)+'</b></button>'}).join('')+'</div>'}
+    return '<article class="match">'
+      +'<div class="match-top"><span class="league">'+m.league+'</span><span class="meta">'+statusBadge+' '+m.time+' • '+m.venue+'</span></div>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button class="fav-btn '+(state.favs[m.id]?'on':'')+'" onclick="toggleFav('+m.id+')">'+(state.favs[m.id]?'⭐ Favourite':'☆ Favourite')+'</button><button class="bell-btn '+(state.reminders[m.id]?'on':'')+'" onclick="toggleReminder('+m.id+')">'+(state.reminders[m.id]?'🔔 Reminder ON':'🔔 Remind Me')+'</button><button class="fav-btn" onclick="openMatch('+m.id+')">📊 Match Detail / Betting →</button></div>'
+      +'<div class="teams">'
+      +'<div class="team-row"><span class="team-name"><span class="flag" style="background:'+m.teamA.color+'">'+m.teamA.short+'</span>'+m.teamA.name+'</span><span class="score">'+m.teamA.score+'<br/>'+formDots(m.formA)+'</span></div>'
+      +'<div class="team-row"><span class="team-name"><span class="flag" style="background:'+m.teamB.color+'">'+m.teamB.short+'</span>'+m.teamB.name+'</span><span class="score">'+m.teamB.score+'<br/>'+formDots(m.formB)+'</span></div>'
+      +'</div>'+liveChips(m)
+      +'<div style="font-size:12px;color:var(--muted);margin-top:6px">Head-to-Head: '+m.h2h+' • Avg score: '+m.teamA.short+' '+m.avgA+' / '+m.teamB.short+' '+m.avgB+'</div>'
+      +'<div class="market-label">Match Winner'+(m.status==='live'?' — In-Play (odds live badal rahe hain)':'')+'</div>'
+      +'<div class="odds-grid">'
+      +'<button class="odds-btn '+(selA?'selected':'')+'" onclick="togglePick('+m.id+',\''+esc(m.teamA.name)+'\','+m.oddsA+')"><span><small>Back</small><strong>'+m.teamA.name+'</strong></span><span class="odds-val">'+fmtOdds(m.oddsA)+'</span></button>'
+      +'<button class="odds-btn '+(selB?'selected':'')+'" onclick="togglePick('+m.id+',\''+esc(m.teamB.name)+'\','+m.oddsB+')"><span><small>Back</small><strong>'+m.teamB.name+'</strong></span><span class="odds-val">'+fmtOdds(m.oddsB)+'</span></button>'
+      +'</div>'+extraHtml+'</article>';
+  }).join('');
+}
+/* ---------- MATCH DETAIL PAGE ---------- */
+function openMatch(id){ state.currentMatchId=id; renderMatchDetail(); goPage('matchdetail'); }
+function renderMatchDetail(){
+  var m=matchById(state.currentMatchId); var box=document.getElementById('matchDetailContent'); if(!m||!box)return;
+  var impA=Math.round(100/m.oddsA), impB=Math.round(100/m.oddsB), tot=impA+impB; var pA=Math.round(impA/tot*100), pB=100-pA;
+  var selA=isSelected(m.id,m.teamA.name), selB=isSelected(m.id,m.teamB.name);
+  box.innerHTML='<div class="detail-hero"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="league" style="color:#ffe08a">'+m.league+' • '+m.tournament+'</span>'+(m.status==='live'?'<span class="badge badge-live">🔴 LIVE</span>':'<span class="badge badge-upcoming">🔵 UPCOMING</span>')+'</div>'
+    +'<div style="font-family:Archivo,sans-serif;font-size:24px;font-weight:900;margin:8px 0">'+m.teamA.name+' vs '+m.teamB.name+'</div>'
+    +'<div style="display:grid;gap:4px;font-size:15px"><div style="display:flex;justify-content:space-between"><span>'+m.teamA.name+'</span><b class="score" style="color:#ffe08a">'+m.teamA.score+'</b></div><div style="display:flex;justify-content:space-between"><span>'+m.teamB.name+'</span><b class="score" style="color:#ffe08a">'+m.teamB.score+'</b></div></div>'
+    +'<div style="color:#cfe8d3;font-size:13px;margin-top:6px">'+m.time+' • '+m.venue+'</div>'+liveChips(m)
+    +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px"><button class="fav-btn '+(state.favs[m.id]?'on':'')+'" onclick="toggleFav('+m.id+')">'+(state.favs[m.id]?'⭐ Favourite':'☆ Favourite')+'</button><button class="bell-btn '+(state.reminders[m.id]?'on':'')+'" onclick="toggleReminder('+m.id+')">'+(state.reminders[m.id]?'🔔 Reminder ON':'🔔 Remind Me')+'</button></div></div>'
+    +'<div class="card" style="margin-top:12px;padding:16px"><h3 style="margin:0 0 8px">🎯 Betting Markets — Match Winner</h3><div class="odds-grid">'
+    +'<button class="odds-btn '+(selA?'selected':'')+'" onclick="togglePick('+m.id+',\''+esc(m.teamA.name)+'\','+m.oddsA+')"><span><small>Back</small><strong>'+m.teamA.name+'</strong></span><span class="odds-val">'+fmtOdds(m.oddsA)+'</span></button>'
+    +'<button class="odds-btn '+(selB?'selected':'')+'" onclick="togglePick('+m.id+',\''+esc(m.teamB.name)+'\','+m.oddsB+')"><span><small>Back</small><strong>'+m.teamB.name+'</strong></span><span class="odds-val">'+fmtOdds(m.oddsB)+'</span></button></div>'
+    +'<p class="helper" style="text-align:left;margin:10px 0 0">Selection bet slip me chali jayegi — side slip (desktop) ya <a href="#" onclick="goPage(\'betslip\');return false" style="font-weight:800;color:var(--green)">Bet Slip Page</a> se stake laga kar place karo.</p></div>'
+    +'<div class="grid2" style="margin-top:12px"><div class="card" style="padding:16px"><h3 style="margin:0 0 8px">📊 Match Stats</h3>'
+    +'<div class="stat-bar"><span style="min-width:110px">'+m.teamA.short+' win %</span><span class="bar"><span class="fill" style="width:'+pA+'%"></span></span><b>'+pA+'%</b></div>'
+    +'<div class="stat-bar"><span style="min-width:110px">'+m.teamB.short+' win %</span><span class="bar"><span class="fill" style="width:'+pB+'%;background:var(--amber)"></span></span><b>'+pB+'%</b></div>'
+    +'<div class="kv"><span>Average Score</span><b>'+m.teamA.short+' '+m.avgA+' • '+m.teamB.short+' '+m.avgB+'</b></div>'
+    +'<div class="kv"><span>Venue</span><b>'+m.venue+'</b></div><div class="kv"><span>Status</span><b>'+(m.status==='live'?'LIVE — In-Play betting open (demo)':'UPCOMING — Pre-match betting open')+'</b></div></div>'
+    +'<div class="card" style="padding:16px"><h3 style="margin:0 0 8px">🤝 Head-to-Head &amp; Form</h3>'
+    +'<div class="kv"><span>Head-to-Head</span><b style="text-align:right">'+m.h2h+'</b></div>'
+    +'<div class="kv"><span>'+m.teamA.name+' form</span>'+formDots(m.formA)+'</div>'
+    +'<div class="kv"><span>'+m.teamB.name+' form</span>'+formDots(m.formB)+'</div>'
+    +'<p class="helper" style="text-align:left;margin:8px 0 0">Form: pichle 5 matches (W = Won, L = Lost, D = Draw/No Result) — demo stats, sirf practice ke liye.</p></div></div>';
+}
+/* ---------- LIVE TICKER (demo in-play) ---------- */
+setInterval(function(){
+  var changed=false;
+  MATCHES.forEach(function(m){
+    if(m.status!=='live')return; changed=true;
+    if(m.live){ var L=m.live; if(!L.target||L.runs<L.target){ L.runs+=Math.floor(Math.random()*9); L.balls=Math.min(120,L.balls+6); if(Math.random()<0.18&&L.wkts<10)L.wkts++; var ov=Math.floor(L.balls/6)+'.'+(L.balls%6); var s=L.runs+'/'+L.wkts+' ('+ov+' ov)'; if(L.bat===m.teamA.name)m.teamA.score=s; else m.teamB.score=s+(L.target?' • need '+(L.target-L.runs)+' off '+(120-L.balls):''); } }
+    m.oddsA=Math.max(1.05,Math.min(6,+(m.oddsA+(Math.random()*0.3-0.15)).toFixed(2)));
+    m.oddsB=Math.max(1.05,Math.min(6,+(m.oddsB+(Math.random()*0.3-0.15)).toFixed(2)));
+    state.slip.forEach(function(s){ if(s.matchId===m.id){ if(s.pick===m.teamA.name)s.odds=m.oddsA; if(s.pick===m.teamB.name)s.odds=m.oddsB; } });
+    state.bets.forEach(function(b){ if(b.status==='Pending')b.cashFactor=Math.max(0.3,Math.min(0.9,(b.cashFactor||0.6)+(Math.random()*0.1-0.05))); });
+  });
+  if(changed&&state.user){ if(state.currentPage==='matches')renderMatches(); if(state.currentPage==='matchdetail')renderMatchDetail(); renderSlip(); if(state.currentPage==='mybets')renderBets(); }
+},7000);
+/* ---------- THEME & ODDS FORMAT ---------- */
+function setTheme(t){ var r=document.documentElement; var b=document.getElementById('themeBtn'); if(t==='dark'){r.setAttribute('data-theme','dark');if(b)b.textContent='☀️ Light';} else if(t==='light'){r.setAttribute('data-theme','light');if(b)b.textContent='🌙 Dark';} else {r.removeAttribute('data-theme');if(b)b.textContent='🌙 Dark';} }
+function togglePassword(id,btn){ var el=document.getElementById(id); if(!el)return; var show=el.type==='password'; el.type=show?'text':'password'; if(btn){ btn.setAttribute('aria-label',show?'Password chhupao':'Password dikhao'); var o=btn.querySelector('.eye-open'),f=btn.querySelector('.eye-off'); if(o)o.style.display=show?'none':''; if(f)f.style.display=show?'':'none'; } el.focus(); }
+function toggleTheme(){ var r=document.documentElement; if(r.getAttribute('data-theme')==='dark')setTheme('light'); else setTheme('dark'); }
+function setOddsFormat(f){ state.oddsFormat=f; ['oddsFmtDec','oddsFmtDec2'].forEach(function(i){var e=document.getElementById(i);if(e)e.classList.toggle('active',f==='decimal')}); ['oddsFmtFrac','oddsFmtFrac2'].forEach(function(i){var e=document.getElementById(i);if(e)e.classList.toggle('active',f==='fractional')}); renderMatches(); renderSlip(); renderBets(); if(state.currentPage==='matchdetail')renderMatchDetail(); }
+/* ---------- BET SLIP: Single / Multiple / System ---------- */
+function setSlipMode(m){ state.slipMode=m; ['single','multiple','system'].forEach(function(x){ ['modeBtn-'+x,'modeBtn-'+x+'2'].forEach(function(i){var e=document.getElementById(i);if(e)e.classList.toggle('active',x===m)}); }); ['systemTypeWrap','systemTypeWrap2'].forEach(function(i){var e=document.getElementById(i);if(e)e.classList.toggle('hidden',m!=='system')}); renderSlip(); }
+function syncSystemType(v){ state.systemType=v; ['systemType','systemType2'].forEach(function(i){var e=document.getElementById(i);if(e)e.value=v}); renderSlip(); }
+function combos(arr,k){ var out=[]; (function rec(s,cur){ if(cur.length===k){out.push(cur.slice());return;} for(var i=s;i<arr.length;i++){cur.push(arr[i]);rec(i+1,cur);cur.pop();} })(0,[]); return out; }
+function slipCalc(){
+  var stake=getStake(), n=state.slip.length;
+  if(state.slipMode==='single'){ var payout=state.slip.reduce(function(s,x){return s+stake*x.odds},0); return {totalStake:stake*n,payout:payout,combined:null,note:'Single mode: har selection alag bet banegi.'}; }
+  if(state.slipMode==='multiple'){ var comb=state.slip.reduce(function(s,x){return s*x.odds},1); var boost=n>=3?1.10:1; return {totalStake:stake,payout:stake*comb*boost,combined:comb,note:n>=3?'Multiple/Acca: sab selections ek bet — +10% Acca Boost (demo) laga hai. Sab jeetna zaroori hai.':'Multiple/Acca: sab selections ek bet, odds multiply. Sab jeetna zaroori hai.'}; }
+  var parts=state.systemType.split('/'), need=+parts[0];
+  if(n<need)return {totalStake:0,payout:0,combined:null,invalid:true,note:'System '+state.systemType+' ke liye kam se kam '+need+' selections chahiye (abhi '+n+' hain).'};
+  var cs=combos(state.slip,need); var pay=cs.reduce(function(s,c){return s+stake*c.reduce(function(a,x){return a*x.odds},1)},0);
+  return {totalStake:stake*cs.length,payout:pay,combined:null,note:'System '+state.systemType+': '+cs.length+' combinations, har combination par stake lagega. Ek selection haar bhi jaye to kuch combinations jeet sakti hain.'};
+}
+function limitCheck(calc){
+  var stake=getStake();
+  if(stake>state.limitPerBet)return '⚠️ Demo Limit: per-bet limit '+fmt(state.limitPerBet)+' credits hai — stake kam karo ya Limits page se limit badlo.';
+  if(state.dailyStaked+calc.totalStake>state.limitDaily)return '⚠️ Demo Limit: daily limit '+fmt(state.limitDaily)+' credits hai (aaj istemal: '+fmt(state.dailyStaked)+'). Kal dobara, ya Limits page se limit badlo.';
+  return '';
+}
+function syncStakePage(v){ var m=document.getElementById('stakeInput'); if(m)m.value=v; renderSlip(); }
+function setStakeBoth(v){ setStake(v); var p=document.getElementById('stakeInputPage'); if(p)p.value=v; }
+function renderSlip(){
+  var box=document.getElementById('slipItems'), empty=document.getElementById('slipEmpty'), form=document.getElementById('slipForm'), sub=document.getElementById('slipSub');
+  var bl=document.getElementById('balanceLabel'); if(bl)bl.textContent=fmt(state.balance);
+  var wb=document.getElementById('walletBalance'); if(wb)wb.textContent=fmt(state.balance);
+  var nc=document.getElementById('slipNavCount'); if(nc)nc.textContent=state.slip.length?'('+state.slip.length+')':'';
+  var pb=document.getElementById('profileBalance'); if(pb)pb.textContent=fmt(state.balance);
+  var itemsHtml=state.slip.map(function(s,i){return '<div class="slip-item"><div class="slip-item-top"><div><b>'+s.pick+'</b><p>'+s.matchLabel+' • '+s.market+'</p></div><button class="remove" onclick="removeSlip('+i+')">×</button></div><div style="margin-top:6px;font-size:13px">Odds <span class="slip-odds">'+fmtOdds(s.odds)+'</span></div></div>'}).join('');
+  var box2=document.getElementById('slipPageItems'), empty2=document.getElementById('slipPageEmpty'), form2=document.getElementById('slipPageForm');
+  if(!state.slip.length){ if(box)box.innerHTML=''; if(empty)empty.classList.remove('hidden'); if(form)form.classList.add('hidden'); if(sub)sub.textContent='Koi selection nahi hai'; if(box2)box2.innerHTML=''; if(empty2)empty2.classList.remove('hidden'); if(form2)form2.classList.add('hidden'); return; }
+  if(empty)empty.classList.add('hidden'); if(form)form.classList.remove('hidden'); if(sub)sub.textContent=state.slip.length+' selection(s) — '+state.slipMode;
+  if(box)box.innerHTML=itemsHtml; if(box2)box2.innerHTML=itemsHtml; if(empty2)empty2.classList.add('hidden'); if(form2)form2.classList.remove('hidden');
+  var calc=slipCalc(), stake=getStake(), warn=calc.invalid?calc.note:limitCheck(calc);
+  var modeName=state.slipMode==='single'?'Single':(state.slipMode==='multiple'?'Multiple / Acca':'System '+state.systemType);
+  function fill(sfx){ var c=document.getElementById('sumCount'+sfx),st=document.getElementById('sumStake'+sfx),py=document.getElementById('sumPayout'+sfx),pf=document.getElementById('sumProfit'+sfx),md=document.getElementById('sumMode'+sfx),od=document.getElementById('sumOdds'+sfx); if(c)c.textContent=state.slip.length; if(st)st.textContent=fmt(calc.totalStake)+' credits'; if(py)py.textContent=fmt(calc.payout)+' credits'; if(pf)pf.textContent=fmt(calc.payout-calc.totalStake)+' credits'; if(md)md.textContent=modeName; if(od)od.textContent=calc.combined?fmtOdds(calc.combined):'—'; }
+  fill(''); fill('2');
+  var note=document.getElementById('slipModeNote'); if(note)note.textContent=calc.note+' Stake wallet se demo credits me katega.';
+  var ok=!calc.invalid&&!warn&&stake>=10&&calc.totalStake<=state.balance&&calc.totalStake>0;
+  [['limitWarn','placeBtn'],['limitWarn2','placeBtn2']].forEach(function(pair){ var w=document.getElementById(pair[0]),b=document.getElementById(pair[1]); if(w){w.classList.toggle('hidden',!warn); w.textContent=warn||'';} if(b){ b.disabled=!ok; b.textContent=calc.totalStake>state.balance?'Balance kam hai — Free Credits lo':('Place Bet — '+fmt(calc.totalStake)+' Credits →'); } });
+}
+function placeBets(){
+  var stake=getStake(); if(stake<10){toast('Kam se kam stake 10 credits hai');return}
+  var calc=slipCalc(); if(calc.invalid){toast(calc.note);return}
+  var lw=limitCheck(calc); if(lw){toast(lw);return}
+  if(calc.totalStake>state.balance){toast('Balance kam hai — Wallet se free credits lo');return}
+  state.balance-=calc.totalStake; state.dailyStaked+=calc.totalStake;
+  var now=new Date(), dstr=now.toLocaleDateString()+' '+now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  function mkBet(pick,label,market,odds,totalStake,potential,type){ return {id:state.betSeq++,pick:pick,matchLabel:label,market:market,odds:odds,stake:totalStake,potential:Math.round(potential),status:'Pending',date:dstr,type:type,cashFactor:0.6,legs:[]}; }
+  if(state.slipMode==='single'){ state.slip.forEach(function(s){ var b=mkBet(s.pick,s.matchLabel,s.market,s.odds,stake,stake*s.odds,'Single'); b.legs=[{matchId:s.matchId,pick:s.pick,odds:s.odds}]; state.bets.unshift(b); }); addTx('Bet Placed',state.slip.length+' single bet(s) @ '+fmt(stake)+' each',-calc.totalStake); }
+  else if(state.slipMode==='multiple'){ var b2=mkBet('Multiple — '+state.slip.length+' selections',state.slip.map(function(s){return s.matchLabel}).join(' + '),'Multiple / Accumulator',calc.combined,calc.totalStake,calc.payout,'Multiple'); b2.legs=state.slip.map(function(s){return {matchId:s.matchId,pick:s.pick,odds:s.odds}}); state.bets.unshift(b2); addTx('Bet Placed','Multiple/Acca — '+state.slip.length+' selections',-calc.totalStake); }
+  else { var b3=mkBet('System '+state.systemType+' — '+state.slip.length+' selections',state.slip.map(function(s){return s.matchLabel}).join(' + '),'System Bet '+state.systemType,0,calc.totalStake,calc.payout,'System'); b3.legs=state.slip.map(function(s){return {matchId:s.matchId,pick:s.pick,odds:s.odds}}); state.bets.unshift(b3); addTx('Bet Placed','System '+state.systemType+' bet',-calc.totalStake); }
+  toast('✅ Bet lag gayi! '+fmt(calc.totalStake)+' demo credits kate.');
+  state.slip=[]; renderMatches(); renderSlip(); renderBets(); goPage('mybets');
+}
+/* ---------- MY BETS: filters, cancel, cash out ---------- */
+function betMatchesFilter(b){
+  if(state.betFilter==='all')return true;
+  if(state.betFilter==='open')return b.status==='Pending';
+  if(state.betFilter==='settled')return b.status!=='Pending'&&b.status!=='Cancelled';
+  return b.status===state.betFilter;
+}
+function betAllUpcoming(b){ if(!b.legs||!b.legs.length)return false; return b.legs.every(function(l){return legStatus(l.matchId)==='upcoming'}); }
+function betAnyLive(b){ if(!b.legs)return false; return b.legs.some(function(l){return legStatus(l.matchId)==='live'}); }
+function cashOutValue(b){ return Math.max(10,Math.round(b.potential*(b.cashFactor||0.6)*0.5)); }
+function renderBets(){
+  var el=document.getElementById('betHistory'); if(!el)return;
+  var bc=document.getElementById('betCountBadge'); if(bc)bc.textContent=state.bets.length?'('+state.bets.filter(function(b){return b.status==='Pending'}).length+' open)':'';
+  var filtered=state.bets.filter(betMatchesFilter);
+  if(!filtered.length){el.innerHTML='<div style="padding:22px 16px;color:var(--muted)">Is filter me koi bet nahi hai. Home page se odds select karke pehli bet lagao 🏏</div>';return}
+  el.innerHTML=filtered.map(function(b){
+    var badgeCls=b.status==='Pending'?'pending':(b.status==='Won'?'won':(b.status==='Lost'?'lost':(b.status==='Cashed Out'?'cashed':'cancelled')));
+    var actions='';
+    if(b.status==='Pending'){
+      if(betAllUpcoming(b))actions+='<button class="cancel-btn" onclick="cancelBet('+b.id+')">✕ Cancel Bet — poora stake wapas (match abhi shuru nahi hua)</button>';
+      else if(betAnyLive(b))actions+='<div class="cash-row"><button class="full" onclick="cashOut('+b.id+',false)">💸 Cash Out Full — '+fmt(cashOutValue(b))+' credits</button><button onclick="cashOut('+b.id+',true)">Cash Out 50% — '+fmt(Math.round(cashOutValue(b)/2))+'</button></div><div style="font-size:12px;color:var(--muted);margin-top:4px">Live match ki bet cancel nahi hoti — Cash Out demo value live odds se badalti hai.</div>';
+      else actions+='<div style="font-size:12px;color:var(--muted);margin-top:4px">Cancel sirf match shuru hone se pehle mumkin hai.</div>';
+    }
+    var legsHtml=(b.legs&&b.legs.length>1)?'<div style="color:var(--muted);font-size:12px;margin-top:3px">Legs: '+b.legs.map(function(l){return l.pick+(l.result?' ('+l.result+')':'')}).join(' • ')+'</div>':'';
+    return '<div class="bet-row"><div style="flex:1"><b>'+b.pick+'</b> <span class="badge badge-'+badgeCls+'">'+b.status+'</span><div style="color:var(--muted);font-size:12px;margin-top:3px">'+b.matchLabel+' • '+b.market+(b.odds?' • Odds '+fmtOdds(b.odds):'')+' • '+b.date+'</div>'+legsHtml+actions+'</div><div style="text-align:right"><div style="font-size:13px;color:var(--muted)">Stake '+fmt(b.stake)+'</div><b style="color:var(--green)">Payout '+fmt(b.potential)+'</b>'+(b.cashedAmount?'<div style="font-size:12px;color:var(--green)">Cashed: '+fmt(b.cashedAmount)+'</div>':'')+'</div></div>';
+  }).join('');
+}
+function cancelBet(id){
+  var b=state.bets.find(function(x){return x.id===id}); if(!b||b.status!=='Pending')return;
+  if(!betAllUpcoming(b)){toast('Ye bet ab cancel nahi ho sakti — match shuru ho chuka hai');return}
+  b.status='Cancelled'; state.balance+=b.stake; state.dailyStaked=Math.max(0,state.dailyStaked-b.stake);
+  addTx('Bet Cancelled — Refund',b.pick+' — stake wapas',b.stake);
+  toast('✅ Bet cancel — '+fmt(b.stake)+' demo credits wapas wallet me.'); renderSlip(); renderBets();
+}
+function cashOut(id,partial){
+  var b=state.bets.find(function(x){return x.id===id}); if(!b||b.status!=='Pending')return;
+  var val=cashOutValue(b);
+  if(!partial){ b.status='Cashed Out'; b.cashedAmount=(b.cashedAmount||0)+val; state.balance+=val; addTx('Cash Out — Full',b.pick,val); toast('💸 Full Cash Out — '+fmt(val)+' demo credits wallet me.'); }
+  else { var half=Math.round(val/2); b.cashedAmount=(b.cashedAmount||0)+half; state.balance+=half; b.stake=Math.round(b.stake/2); b.potential=Math.round(b.potential/2); addTx('Cash Out — Partial 50%',b.pick,half); toast('💸 Partial Cash Out — '+fmt(half)+' credits mile, baqi bet aadhe stake par jaari hai.'); }
+  renderSlip(); renderBets();
+}
+/* ---------- WALLET: transactions filter + daily bonus ---------- */
+function filterTx(f,btn){ state.txFilter=f; if(btn){btn.parentElement.querySelectorAll('button').forEach(function(x){x.classList.remove('active')});btn.classList.add('active');} renderTx(); }
+function txCat(t){ var s=(t.type+' '+t.detail).toLowerCase(); if(s.indexOf('bonus')>-1)return 'bonus'; if(s.indexOf('cash out')>-1||s.indexOf('refund')>-1||s.indexOf('cancel')>-1)return 'refund'; if(s.indexOf('won')>-1||s.indexOf('settlement')>-1||s.indexOf('payout')>-1)return 'win'; if(s.indexOf('bet placed')>-1)return 'bet'; return 'topup'; }
+function renderTx(){
+  var el=document.getElementById('txList'); if(!el)return;
+  var list=state.tx.filter(function(t){return state.txFilter==='all'||txCat(t)===state.txFilter});
+  if(!list.length){el.innerHTML='<div style="padding:16px;color:var(--muted);font-size:14px">Is filter me koi transaction nahi hai.</div>';return}
+  el.innerHTML=list.slice(0,20).map(function(t){var col=t.amount>=0?'var(--green)':'var(--red)';return '<div class="tx-row"><div><b style="font-size:14px">'+t.type+'</b><div style="color:var(--muted);font-size:12px">'+t.detail+' • '+t.time+'</div></div><b style="color:'+col+'">'+(t.amount>=0?'+':'')+fmt(t.amount)+'</b></div>'}).join('');
+}
+function claimDailyBonus(){
+  var btn=document.getElementById('dailyBonusBtn'), st=document.getElementById('bonusStatus');
+  if(state.dailyBonusDate===TODAYSTR){ toast('Aaj ka daily bonus pehle hi claim ho chuka hai — kal dobara milega 🎁'); if(st)st.textContent='✅ Aaj ka bonus claim ho chuka hai — kal dobara milega.'; if(btn){btn.disabled=true;btn.textContent='Claimed ✓';} return; }
+  state.dailyBonusDate=TODAYSTR; state.balance+=1000; addTx('Daily Bonus','Roz ka free demo bonus +1,000',1000);
+  if(st)st.textContent='✅ +1,000 demo credits mil gaye — kal dobara claim karna.'; if(btn){btn.disabled=true;btn.textContent='Claimed ✓';}
+  toast('🎁 Daily Bonus — +1,000 FREE demo credits!'); renderSlip(); renderTx();
+}
+/* ---------- LEADERBOARD & PROFILE ---------- */
+var DEMO_PLAYERS=[{name:'Fatima Noor',credits:24100,wins:31},{name:'Ahmed Raza',credits:18450,wins:23},{name:'Hassan Ali',credits:15200,wins:19},{name:'Bilal Khan',credits:7250,wins:9},{name:'Usman Tariq',credits:3980,wins:4}];
+function leaderboardRows(){ var rows=DEMO_PLAYERS.map(function(p){return {name:p.name,credits:p.credits,wins:p.wins,you:false}}); if(state.user)rows.push({name:state.user.name+' (You)',credits:state.balance,wins:state.bets.filter(function(b){return b.status==='Won'}).length,you:true}); rows.sort(function(a,b){return b.credits-a.credits}); return rows; }
+function renderLeaderboard(){
+  var el=document.getElementById('leaderboardList'); if(!el)return;
+  var colors=['#0a7a3e','#0b4ea2','#7c3aed','#b45309','#dc2626','#059669'];
+  el.innerHTML=leaderboardRows().map(function(p,i){return '<div class="lb-row" '+(p.you?'style="background:var(--chip)"':'')+'><span class="rank '+(i<3?'top':'')+'">'+(i+1)+'</span><span class="avatar" style="background:'+colors[i%colors.length]+'">'+p.name.charAt(0)+'</span><div style="flex:1"><b>'+p.name+'</b><div style="color:var(--muted);font-size:12px">'+p.wins+' bets won (demo)</div></div><b>🪙 '+fmt(p.credits)+'</b></div>'}).join('');
+}
+function renderProfile(){
+  if(!state.user)return;
+  var set=function(i,v){var e=document.getElementById(i);if(e)e.textContent=v};
+  set('profileName',state.user.name); set('profileId',state.user.id); set('profileBalance',fmt(state.balance));
+  set('profileBets',state.bets.length); set('profileOpen',state.bets.filter(function(b){return b.status==='Pending'}).length);
+  set('profileWL',state.bets.filter(function(b){return b.status==='Won'}).length+' / '+state.bets.filter(function(b){return b.status==='Lost'}).length);
+  var rows=leaderboardRows(), rank=rows.findIndex(function(r){return r.you})+1; set('profileRank',rank?('#'+rank+' of '+rows.length):'—');
+  var av=document.getElementById('profileAvatar'); if(av)av.textContent=state.user.name.charAt(0).toUpperCase();
+  var rl=document.getElementById('reminderList'); if(rl){ var ids=Object.keys(state.reminders).filter(function(k){return state.reminders[k]}); rl.innerHTML=ids.length?ids.map(function(k){var m=matchById(+k);return m?'<div class="kv"><span>🔔 '+m.teamA.name+' vs '+m.teamB.name+'</span><b>'+m.time+'</b></div>':''}).join(''):'<p class="helper" style="text-align:left">Abhi koi reminder nahi hai. Matches page par kisi match ka 🔔 dabao.</p>'; }
+}
+/* ---------- LIMITS ---------- */
+function saveLimits(){
+  var a=parseFloat(document.getElementById('limitPerBet').value||0), d=parseFloat(document.getElementById('limitDaily').value||0);
+  if(a>=10)state.limitPerBet=a; if(d>=10)state.limitDaily=d;
+  var u=document.getElementById('dailyUsedLabel'); if(u)u.textContent=fmt(state.dailyStaked);
+  toast('✅ Demo limits save ho gayen — Per bet: '+fmt(state.limitPerBet)+' • Daily: '+fmt(state.limitDaily)); renderSlip();
+}
+/* ---------- INIT ---------- */
+(function(){ var u=document.getElementById('dailyUsedLabel'); if(u)u.textContent=fmt(state.dailyStaked); renderMatches(); })();
+</script>
+</body>
+</html>
